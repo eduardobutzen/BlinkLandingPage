@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blink — flashcards com IA a partir do seu próprio material</title>
+<meta name="description" content="O Blink transforma seu PDF, slide, Word, imagem ou um tópico digitado em decks de flashcards com repetição espaçada. As figuras do seu material viram as imagens dos cards.">
+<meta name="theme-color" content="#e2e2df">
+<link rel="icon" type="image/svg+xml" href="assets/brand/blink_favicon.svg">
+<!-- Ao copiar os ícones do app, troque por: <link rel="icon" href="assets/brand/blink_favicon.png"> -->
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blink — flashcards com IA a partir do seu próprio material">
+<meta property="og:description" content="Transforme PDF, slide, Word, imagem ou um tópico digitado em decks prontos. Repetição espaçada que decide quando você revisa.">
+<meta property="og:locale" content="pt_BR">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+
+<script>
+  // Aplica o tema antes da pintura para não piscar.
+  (function () {
+    var t;
+    try { t = localStorage.getItem('blink-theme'); } catch (e) {}
+    if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', t);
+    if (t === 'dark') {
+      document.write('<meta name="theme-color" content="#000000">');
+    }
+  })();
+</script>
+</head>
+<body>
+
+<!-- ===================== HEADER ===================== -->
+<header class="header">
+  <div class="wrap header__inner">
+    <a class="brand" href="#top" aria-label="Blink — início">
+      <span class="brand__mark" aria-hidden="true">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M2.5 13.5c3.2 4.2 15.8 4.2 19 0"></path>
+          <path d="M5.4 17.2 4.2 19.4M12 18.6V21M18.6 17.2l1.2 2.2"></path>
+        </svg>
+      </span>
+      <span class="brand__word">Blink</span>
+    </a>
+
+    <nav class="nav" aria-label="Seções da página">
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#modos">Modos</a>
+      <a href="#progresso">Progresso</a>
+      <a href="#comunidade">Comunidade</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#planos">Planos</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <div class="header__actions">
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Alternar tema claro e escuro">
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+        </svg>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path>
+        </svg>
+      </button>
+      <a class="btn btn--solid" href="#lista-de-espera">
+        Entrar na lista
+        <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ===================== HERO ===================== -->
+<section class="section hero">
+  <div class="wrap hero__inner">
+    <h1 class="h-display tt">Seu material vira <strong>deck de flashcards</strong> em segundos.</h1>
+
+    <div class="hero__cta">
+      <div class="store-badges">
+        <span class="store-badge" role="img" aria-label="App Store — em breve">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.2 12.7c0-2.1 1.7-3.1 1.8-3.2-1-1.4-2.5-1.6-3-1.7-1.3-.1-2.5.8-3.2.8-.7 0-1.6-.7-2.7-.7-1.4 0-2.7.8-3.4 2-1.5 2.5-.4 6.2 1 8.3.7 1 1.6 2.1 2.6 2.1 1.1 0 1.5-.7 2.8-.7 1.3 0 1.6.7 2.7.7 1.1 0 1.9-1 2.6-2 .8-1.2 1.1-2.3 1.2-2.4-.1 0-2.4-.9-2.4-3.2zM14.3 6.4c.6-.7 1-1.7.9-2.7-.9 0-1.9.6-2.5 1.3-.6.6-1 1.6-.9 2.6 1 .1 1.9-.5 2.5-1.2z"></path></svg>
+          <span>
+            <span class="s1">Baixe na</span>
+            <span class="s2">App Store</span>
+          </span>
+        </span>
+        <span class="store-badge" role="img" aria-label="Google Play — em breve">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.4c-.3.3-.5.8-.5 1.4v16.4c0 .6.2 1.1.5 1.4l.1.1 9.2-9.2v-.2L3.6 2.4zM16.1 15.4l-3.1-3.1v-.2l3.1-3.1.1.1 3.7 2.1c1 .6 1 1.6 0 2.2l-3.7 2.1-.1-.1zM15.4 16.1 12.9 12l-9.2 9.2c.3.4.9.4 1.6 0l10.1-5.1zM15.4 7.9 5.3 2.8c-.7-.4-1.3-.4-1.6 0L12.9 12l2.5-4.1z"></path></svg>
+          <span>
+            <span class="s1">Disponível no</span>
+            <span class="s2">Google Play</span>
+          </span>
+        </span>
+      </div>
+      <p class="hero__note">Ainda não publicamos nas lojas. <a href="#lista-de-espera" style="color:var(--text);text-decoration:underline;text-underline-offset:3px">Avisamos você no dia</a>.</p>
+    </div>
+
+    <!-- Leque de capturas reais do app -->
+    <div class="mockup-fan" aria-label="Telas do aplicativo Blink">
+      <figure class="shot">
+        <img src="assets/mockups/decks.webp" width="700" height="1422" loading="eager" decoding="async"
+             alt="Tela Decks do Blink: lista de decks com capa, número de cards e quando cada um foi estudado.">
+      </figure>
+      <figure class="shot">
+        <img src="assets/mockups/inicio.webp" width="700" height="1422" loading="eager" decoding="async" fetchpriority="high"
+             alt="Tela inicial do Blink: anel da meta diária em 25 de 60 cards, sequência de 2 dias e o botão Revisar 49 cards.">
+      </figure>
+      <figure class="shot">
+        <img src="assets/mockups/progresso.webp" width="700" height="1422" loading="eager" decoding="async"
+             alt="Tela Progresso do Blink: patente Aprendiz no nível 3, heatmap de atividade, 271 cards estudados e 94% de acerto.">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== NÚMEROS ===================== -->
+<section class="section section--tight">
+  <div class="wrap">
+    <ul class="stats reveal">
+      <li class="stat"><p class="stat__n">6</p><p class="stat__l">formatos de entrada</p></li>
+      <li class="stat"><p class="stat__n">4</p><p class="stat__l">modos de prática</p></li>
+      <li class="stat"><p class="stat__n">SM&#8209;2</p><p class="stat__l">o algoritmo do Anki</p></li>
+      <li class="stat"><p class="stat__n">73</p><p class="stat__l">conquistas</p></li>
+      <li class="stat"><p class="stat__n">7</p><p class="stat__l">patentes de nível</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== O PROBLEMA ===================== -->
+<section class="section section--alt">
+  <div class="wrap">
+    <div class="section-head section-head--center reveal">
+      <p class="eyebrow">O problema</p>
+      <h2 class="h-section tt">Seu PDF de 60 páginas <strong>não estuda sozinho</strong>.</h2>
+      <p class="lead">Você já tem o material certo. O que falta é o trabalho chato que fica entre ele e a revisão.</p>
+    </div>
+
+    <div class="grid grid--3 reveal">
+      <article class="card">
+        <span class="card__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.5 2"></path></svg>
+        </span>
+        <h3 class="h-card">Digitar card é mais lento que estudar</h3>
+        <p class="muted">Uma apostila inteira vira horas de copiar e colar antes da primeira revisão — e aí o ânimo já foi.</p>
+      </article>
+      <article class="card">
+        <span class="card__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.5h3.4l.5 2.4 2.1 1.2 2.3-.8 1.7 3-1.8 1.6v2.2l1.8 1.6-1.7 3-2.3-.8-2.1 1.2-.5 2.4h-3.4l-.5-2.4-2.1-1.2-2.3.8-1.7-3 1.8-1.6v-2.2L3.7 9.3l1.7-3 2.3.8 2.1-1.2z"></path><circle cx="12" cy="12" r="2.6"></circle></svg>
+        </span>
+        <h3 class="h-card">Configurar o Anki vira projeto paralelo</h3>
+        <p class="muted">Add-ons, perfis, quatro botões de avaliação. Poder de sobra para quem só quer revisar direito.</p>
+      </article>
+      <article class="card">
+        <span class="card__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="15" rx="3"></rect><path d="M3 15.5l4.5-4.5 4 4 3-3L21 17"></path><circle cx="8.5" cy="9" r="1.6"></circle></svg>
+        </span>
+        <h3 class="h-card">As figuras ficam para trás</h3>
+        <p class="muted">Gráfico, esquema, corte anatômico: é o que mais cai na prova e o que nenhum gerador de cards leva junto.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== COMO FUNCIONA ===================== -->
+<section class="section" id="como-funciona">
+  <div class="wrap">
+    <div class="section-head section-head--center reveal">
+      <p class="eyebrow">Do material ao deck</p>
+      <h2 class="h-section tt">Três passos, <strong>nenhuma configuração</strong>.</h2>
+    </div>
+
+    <div class="grid grid--3 reveal">
+      <article class="card step">
+        <span class="step__n">1</span>
+        <h3 class="h-card">Envie o que você já tem</h3>
+        <p class="muted">PDF, PowerPoint, Word, uma foto do caderno, um texto colado — ou só digite o tópico e deixe a IA levantar o conteúdo.</p>
+        <p class="small muted">Até 25 MB e 80 páginas por arquivo. Passou disso, o Blink processa o que cabe e avisa.</p>
+      </article>
+      <article class="card step">
+        <span class="step__n">2</span>
+        <h3 class="h-card">A IA monta os cards</h3>
+        <p class="muted">Perguntas e respostas saem do seu conteúdo, não de um resumo genérico da internet. Tabelas viram markdown e as notas do apresentador entram na conta.</p>
+        <p class="small muted">Claude Sonnet 5 para documentos, Claude Haiku 4.5 para tópicos e correção.</p>
+      </article>
+      <article class="card step">
+        <span class="step__n">3</span>
+        <h3 class="h-card">Estude e esqueça o resto</h3>
+        <p class="muted">A repetição espaçada agenda cada card. Você abre o app, revisa o que está devido e fecha.</p>
+        <p class="small muted">Um lembrete diário avisa quantos cards estão esperando — o número real, não um empurrão genérico.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FIGURAS (diferencial) ===================== -->
+<section class="section section--alt">
+  <div class="wrap split">
+    <div class="split__body reveal">
+      <p class="eyebrow">O diferencial</p>
+      <h2 class="h-section tt">As figuras da sua apostila viram <strong>as imagens dos seus cards</strong>.</h2>
+      <p class="lead">Um extrator próprio abre o arquivo, recorta cada ilustração com posição e legenda,
+        e um ranking escolhe as que valem virar card. Você só confirma.</p>
+      <ul class="checklist">
+        <li><span class="tick" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4 10-10"></path></svg></span><span><b>Você decide.</b> Material só de texto pula essa etapa inteira.</span></li>
+        <li><span class="tick" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4 10-10"></path></svg></span><span><b>Legenda preservada.</b> A figura chega ao card com o contexto que ela tinha no original.</span></li>
+        <li><span class="tick" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4 10-10"></path></svg></span><span><b>Até 60 figuras</b> aprovadas por material, ranqueadas pela relevância.</span></li>
+        <li><span class="tick" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4 10-10"></path></svg></span><span><b>Tabelas e notas do slide</b> entram junto, sem virar bloco de texto ilegível.</span></li>
+      </ul>
+    </div>
+
+    <div class="split__media reveal">
+      <div class="card card--hi" style="width:100%;max-width:420px">
+        <p class="eyebrow">O que o extrator devolve</p>
+        <ul class="checklist" style="margin-top:20px;gap:0">
+          <li style="display:block;border-bottom:1px solid var(--line-soft);padding-bottom:14px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px">
+              <b>Figura 4 · pág. 12</b><span class="small">curva de dose-resposta</span>
+            </div>
+          </li>
+          <li style="display:block;border-bottom:1px solid var(--line-soft);padding:14px 0">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px">
+              <b>Figura 7 · pág. 19</b><span class="small">esquema do arco reflexo</span>
+            </div>
+          </li>
+          <li style="display:block;border-bottom:1px solid var(--line-soft);padding:14px 0">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px">
+              <b>Tabela 2 · pág. 21</b><span class="small">convertida em markdown</span>
+            </div>
+          </li>
+          <li style="display:block;padding-top:14px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px">
+              <b>Notas do slide 14</b><span class="small">entram no verso do card</span>
+            </div>
+          </li>
+        </ul>
+        <p class="small muted" style="margin-top:20px">Cada item vem com a página de origem. O que você aprovar
+          vira imagem de card; o resto é descartado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== REPETIÇÃO ESPAÇADA ===================== -->
+<section class="section">
+  <div class="wrap split split--rev">
+    <div class="split__body reveal">
+      <p class="eyebrow">Repetição espaçada</p>
+      <h2 class="h-section tt">Diga só se acertou ou errou. <strong>O Blink decide quando você revisa.</strong></h2>
+      <p class="lead">O mesmo algoritmo SM-2 que sustenta o Anki, com a decisão reduzida ao que você
+        realmente consegue responder no automático: <em>Errei</em> ou <em>Entendi</em> — no botão ou no swipe.</p>
+      <ul class="checklist">
+        <li><span class="tick" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4 10-10"></path></svg></span><span><b>Errou, volta na mesma sessão</b> — e ainda é reagendado para os próximos dias.</span></li>
+        <li><span class="tick" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4 10-10"></path></svg></span><span><b>Cada card tem seu intervalo</b>, com ease factor e data de próxima revisão próprios.</span></li>
+        <li><span class="tick" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4 10-10"></path></svg></span><span><b>O que você dominou sai do rodízio</b> e para de ocupar espaço na sessão.</span></li>
+        <li><span class="tick" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4 10-10"></path></svg></span><span><b>Cronômetro opcional</b> de 5 a 60 minutos, com alerta em âmbar a 1 min e vermelho a 10 s.</span></li>
+      </ul>
+    </div>
+
+    <div class="split__media reveal">
+      <div class="card card--hi" style="width:100%;max-width:420px">
+        <p class="eyebrow">Um card, ao longo do tempo</p>
+        <ul class="checklist" style="margin-top:20px;gap:0">
+          <li style="display:block;border-bottom:1px solid var(--line-soft);padding-bottom:14px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px">
+              <b>Hoje</b><span class="small">Errei · volta em 10 min</span>
+            </div>
+          </li>
+          <li style="display:block;border-bottom:1px solid var(--line-soft);padding:14px 0">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px">
+              <b>Amanhã</b><span class="small">Entendi · volta em 3 dias</span>
+            </div>
+          </li>
+          <li style="display:block;border-bottom:1px solid var(--line-soft);padding:14px 0">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px">
+              <b>Em 3 dias</b><span class="small">Entendi · volta em 9 dias</span>
+            </div>
+          </li>
+          <li style="display:block;padding-top:14px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px">
+              <b>Em 12 dias</b><span class="small">Entendi · dominado</span>
+            </div>
+          </li>
+        </ul>
+        <p class="small muted" style="margin-top:20px">Você não escolhe o intervalo. Só responde.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MODOS ===================== -->
+<section class="section section--alt" id="modos">
+  <div class="wrap">
+    <div class="section-head section-head--center reveal">
+      <p class="eyebrow">Quatro modos</p>
+      <h2 class="h-section tt">O mesmo deck, <strong>cobrado de quatro jeitos</strong>.</h2>
+      <p class="lead">Porque reconhecer a resposta é fácil demais quando você já viu o card umas dez vezes.</p>
+    </div>
+
+    <div class="grid grid--4 reveal">
+      <article class="card">
+        <span class="card__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="6" width="14" height="12" rx="3"></rect><path d="M7 3.5h11a3 3 0 0 1 3 3V16"></path></svg>
+        </span>
+        <h3 class="h-card">Flashcards</h3>
+        <p class="muted">Vire o card e avalie a sua resposta. Botão ou swipe.</p>
+      </article>
+      <article class="card">
+        <span class="card__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M8.5 13l2.4 2.4L15.8 10"></path></svg>
+        </span>
+        <h3 class="h-card">Quiz</h3>
+        <p class="muted">Múltipla escolha com alternativas suas ou geradas pela IA.</p>
+      </article>
+      <article class="card">
+        <span class="card__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4l10.5-10.5a2.8 2.8 0 0 0-4-4L4 16z"></path><path d="M14 6l4 4"></path></svg>
+        </span>
+        <h3 class="h-card">Escrever</h3>
+        <p class="muted">Você digita e a IA corrige por sentido, não por letra igual.</p>
+      </article>
+      <article class="card">
+        <span class="card__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h4l10 10h4M3 17h4l3-3M14 10l3-3h4"></path><path d="M18 4l3 3-3 3M18 14l3 3-3 3"></path></svg>
+        </span>
+        <h3 class="h-card">Misto</h3>
+        <p class="muted">Flashcard e quiz intercalados: alternado 1 a 1 ou aleatório 50/50.</p>
+      </article>
+    </div>
+
+    <p class="muted small reveal" style="margin-top:24px;text-align:center">
+      Toda sessão termina com acertos, tempo e taxa de acerto — e um cronômetro regressivo se você quiser pressão.
+    </p>
+  </div>
+</section>
+
+<!-- ===================== PROGRESSO E HÁBITO ===================== -->
+<section class="section" id="progresso">
+  <div class="wrap">
+    <div class="section-head section-head--center reveal">
+      <p class="eyebrow">Hábito e progresso</p>
+      <h2 class="h-section tt">Estude no ritmo certo, todo dia, <strong>sem planilha e sem culpa</strong>.</h2>
+    </div>
+
+    <div class="grid grid--2 reveal" style="align-items:stretch">
+      <article class="card">
+        <span class="card__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 3a9 9 0 0 1 7.4 14.1"></path></svg>
+        </span>
+        <h3 class="h-card">Meta diária e sequência</h3>
+        <p class="muted">Escolha de 10 a 150 cards por dia e acompanhe o anel fechar. A sequência conta os dias
+          seguidos — com alerta opcional quando ela está prestes a cair.</p>
+      </article>
+      <article class="card">
+        <span class="card__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="6" height="6" rx="1.5"></rect><rect x="3" y="14" width="6" height="6" rx="1.5"></rect><rect x="14" y="4" width="6" height="6" rx="1.5"></rect><rect x="14" y="14" width="6" height="6" rx="1.5"></rect></svg>
+        </span>
+        <h3 class="h-card">Heatmap de atividade</h3>
+        <p class="muted">Um ano inteiro de estudo em um quadro só, no estilo GitHub. Dá para ver de longe onde você sumiu.</p>
+        <div class="heat" data-heat="big" style="margin-top:20px;gap:2px" aria-hidden="true"><i></i><i data-l="2"></i><i data-l="3"></i><i></i><i></i><i></i><i></i><i data-l="1"></i><i></i><i data-l="1"></i><i></i><i></i><i></i><i></i><i></i><i data-l="3"></i><i></i><i></i><i data-l="4"></i><i></i><i></i><i data-l="4"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i data-l="1"></i><i data-l="1"></i><i data-l="1"></i><i data-l="3"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i data-l="3"></i><i data-l="2"></i><i></i><i></i><i></i><i></i><i></i><i></i><i data-l="1"></i><i></i><i></i><i data-l="4"></i><i></i><i data-l="3"></i><i></i><i></i><i></i><i></i><i data-l="3"></i><i data-l="3"></i><i></i><i></i><i data-l="4"></i><i></i><i data-l="1"></i><i data-l="3"></i><i></i><i></i><i data-l="2"></i><i></i><i></i><i></i><i></i><i data-l="3"></i><i></i><i></i><i data-l="3"></i><i data-l="2"></i><i></i><i></i><i></i><i data-l="2"></i><i data-l="4"></i><i></i><i></i><i></i><i></i><i data-l="3"></i><i></i><i></i><i></i><i data-l="2"></i><i data-l="4"></i><i></i><i></i><i data-l="1"></i><i></i><i></i><i data-l="2"></i><i data-l="3"></i><i></i><i data-l="2"></i><i></i><i data-l="4"></i><i></i><i data-l="2"></i><i></i><i data-l="2"></i><i></i><i></i><i></i><i></i><i data-l="1"></i><i></i><i></i><i data-l="1"></i><i data-l="3"></i><i data-l="4"></i><i></i><i data-l="2"></i><i></i><i data-l="1"></i><i></i><i></i><i></i><i></i><i></i><i data-l="1"></i><i data-l="2"></i><i></i><i></i><i></i><i></i><i data-l="2"></i><i></i><i></i><i data-l="1"></i><i data-l="2"></i><i data-l="2"></i><i></i><i></i><i></i><i></i><i data-l="4"></i><i></i><i></i><i></i><i></i><i data-l="2"></i><i data-l="2"></i><i data-l="2"></i><i></i><i data-l="4"></i><i data-l="2"></i><i></i><i></i><i></i><i></i><i data-l="2"></i><i></i><i></i><i></i><i></i><i data-l="3"></i><i data-l="4"></i><i data-l="4"></i><i data-l="1"></i><i></i><i></i><i data-l="1"></i><i></i><i data-l="3"></i><i></i><i data-l="3"></i><i></i><i></i><i data-l="3"></i><i data-l="2"></i><i></i><i data-l="2"></i><i></i><i data-l="2"></i><i></i><i></i><i data-l="1"></i><i data-l="4"></i><i></i><i></i><i data-l="1"></i><i></i><i></i><i></i><i></i><i></i><i data-l="4"></i><i data-l="3"></i><i></i><i data-l="1"></i><i data-l="3"></i><i data-l="3"></i><i></i><i data-l="3"></i><i data-l="2"></i><i></i><i></i><i data-l="2"></i><i data-l="1"></i><i></i><i></i><i data-l="4"></i><i></i><i></i><i data-l="1"></i><i></i><i></i><i data-l="4"></i><i data-l="1"></i><i data-l="2"></i><i></i><i></i><i></i><i></i><i data-l="2"></i><i data-l="4"></i><i></i><i data-l="3"></i><i data-l="4"></i><i></i><i></i><i></i><i></i><i data-l="4"></i><i data-l="4"></i><i></i><i></i><i></i><i data-l="4"></i><i data-l="4"></i><i></i><i data-l="4"></i><i data-l="2"></i><i></i><i data-l="1"></i><i data-l="2"></i><i></i><i></i><i data-l="3"></i><i data-l="4"></i><i data-l="4"></i><i data-l="4"></i><i data-l="4"></i><i data-l="1"></i><i data-l="4"></i><i data-l="3"></i><i data-l="2"></i><i data-l="2"></i><i></i><i data-l="4"></i><i data-l="4"></i><i></i><i></i><i data-l="1"></i><i></i><i data-l="2"></i><i></i><i></i><i data-l="2"></i><i data-l="2"></i><i data-l="1"></i><i data-l="4"></i><i></i><i></i><i data-l="2"></i><i></i><i data-l="2"></i><i data-l="3"></i><i data-l="2"></i><i data-l="2"></i><i data-l="4"></i><i></i><i data-l="1"></i><i></i><i data-l="2"></i><i></i><i></i><i data-l="2"></i><i data-l="1"></i><i data-l="2"></i><i></i><i data-l="2"></i><i data-l="1"></i><i data-l="3"></i><i data-l="3"></i><i data-l="4"></i><i></i><i data-l="2"></i><i data-l="4"></i><i data-l="1"></i><i data-l="4"></i><i data-l="4"></i><i data-l="4"></i><i></i><i></i><i></i><i data-l="4"></i><i data-l="4"></i><i data-l="4"></i><i></i><i data-l="2"></i><i data-l="3"></i><i></i><i data-l="3"></i><i data-l="1"></i><i data-l="2"></i><i data-l="3"></i><i data-l="2"></i><i></i><i data-l="1"></i><i data-l="3"></i><i data-l="2"></i><i data-l="4"></i><i data-l="4"></i><i></i><i></i><i data-l="1"></i><i data-l="4"></i><i></i><i></i><i data-l="4"></i><i data-l="3"></i><i data-l="2"></i><i data-l="1"></i><i data-l="4"></i><i data-l="1"></i><i data-l="1"></i><i data-l="1"></i><i data-l="3"></i><i data-l="3"></i><i data-l="2"></i><i data-l="2"></i><i data-l="2"></i><i data-l="2"></i><i data-l="4"></i><i data-l="1"></i><i data-l="3"></i><i></i><i data-l="3"></i><i data-l="3"></i><i data-l="4"></i><i data-l="1"></i><i data-l="1"></i><i></i><i data-l="2"></i><i data-l="4"></i><i data-l="3"></i><i data-l="1"></i><i></i><i></i><i data-l="1"></i></div>
+      </article>
+    </div>
+
+    <div class="card reveal" style="margin-top:20px">
+      <div class="grid grid--2" style="gap:40px;align-items:center">
+        <div>
+          <h3 class="h-card">XP, níveis e 7 patentes</h3>
+          <p class="muted" style="margin-top:12px">Cada card revisado vale 1 XP e cada nível custa um pouco mais que o anterior.
+            No topo, duas patentes em dourado que ninguém alcança por acidente.</p>
+          <div class="ranks" style="margin-top:20px">
+            <span class="rank">Iniciante</span><span class="sep">›</span>
+            <span class="rank">Aprendiz</span><span class="sep">›</span>
+            <span class="rank">Dedicado</span><span class="sep">›</span>
+            <span class="rank">Estudante</span><span class="sep">›</span>
+            <span class="rank">Erudito</span><span class="sep">›</span>
+            <span class="rank is-gold">Mestre</span><span class="sep">›</span>
+            <span class="rank is-gold">Lenda</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="h-card">73 conquistas que você não perde</h3>
+          <p class="muted" style="margin-top:12px">Todas são calculadas sobre o seu histórico completo: nenhuma expira, e as novas
+            desbloqueiam retroativamente pelo que você já fez.</p>
+          <div class="badges" style="margin-top:20px">
+            <span class="badge-chip">🎉 Primeiro deck</span>
+            <span class="badge-chip">🪜 Primeiro degrau</span>
+            <span class="badge-chip">🧘 Uma hora na cadeira</span>
+            <span class="badge-chip">🥪 Sanduíche de estudo</span>
+            <span class="badge-chip">⚽ Hat-trick</span>
+            <span class="badge-chip">🐢 Devagar e sempre</span>
+            <span class="badge-chip is-gold">🐦‍🔥 Fênix</span>
+            <span class="badge-chip">🐍 Fera domada</span>
+            <span class="badge-chip">🧭 Semana completa</span>
+            <span class="badge-chip is-gold">🪐 Ano completo</span>
+            <span class="badge-chip">🐳 Deck baleia</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== COMUNIDADE ===================== -->
+<section class="section section--alt" id="comunidade">
+  <div class="wrap">
+    <div class="split">
+      <div class="split__body reveal">
+        <p class="eyebrow">Comunidade</p>
+        <h2 class="h-section tt">Publique o seu deck <strong>nos seus termos</strong>.</h2>
+        <p class="lead">Compartilhar não devia significar abrir mão. Ao publicar, você escolhe a licença —
+          e ela é respeitada na hora do download.</p>
+        <ul class="checklist">
+          <li><span class="tick" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4 10-10"></path></svg></span><span>Descubra por <b>busca, tags e o que está em alta</b> na semana.</span></li>
+          <li><span class="tick" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4 10-10"></path></svg></span><span>Avalie com <b>estrelas</b> e veja quantas vezes cada deck foi baixado.</span></li>
+          <li><span class="tick" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4 10-10"></path></svg></span><span>Baixe o deck de outra pessoa e <b>continue de onde ela parou</b>.</span></li>
+        </ul>
+      </div>
+
+      <div class="split__media reveal">
+        <figure class="shot">
+          <img src="assets/mockups/comunidade.webp" width="700" height="1422" loading="lazy" decoding="async"
+               alt="Tela Comunidade do Blink: busca por concurso ou matéria, filtros por tag, decks em alta na semana com nota em estrelas e a lista dos mais bem avaliados.">
+        </figure>
+      </div>
+    </div>
+
+    <div class="grid grid--3 reveal" style="margin-top:64px">
+      <article class="card">
+        <span class="license__tag">Protegido</span>
+        <h3 class="h-card">Baixar e estudar</h3>
+        <p class="muted">Outras pessoas estudam o seu deck, mas não conseguem exportar em arquivo nem republicar.</p>
+      </article>
+      <article class="card">
+        <span class="license__tag">Compartilhável</span>
+        <h3 class="h-card">Baixar e exportar</h3>
+        <p class="muted">Podem levar o deck para fora do app em arquivo, mas não publicar como se fosse deles.</p>
+      </article>
+      <article class="card">
+        <span class="license__tag">Aberto</span>
+        <h3 class="h-card">Adaptar e republicar</h3>
+        <p class="muted">Liberado para exportar e publicar adaptações — sempre com o crédito de volta para você.</p>
+      </article>
+    </div>
+
+    <div class="grid grid--3 reveal" style="margin-top:20px">
+      <article class="card card--hi">
+        <h3 class="h-card">Proveniência preservada</h3>
+        <p class="muted">Deck adaptado mostra “Adaptado de …”. A origem não some no caminho.</p>
+      </article>
+      <article class="card card--hi">
+        <h3 class="h-card">Cópia por snapshot</h3>
+        <p class="muted">Quem baixou fica com a própria versão — editar o original não muda o deck de ninguém.</p>
+      </article>
+      <article class="card card--hi">
+        <h3 class="h-card">Moderação de verdade</h3>
+        <p class="muted">Denúncias têm fila e a remoção sai do ar no banco, não só na tela.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRIVACIDADE ===================== -->
+<section class="section" id="privacidade">
+  <div class="wrap">
+    <div class="section-head section-head--center reveal">
+      <p class="eyebrow">Privacidade</p>
+      <h2 class="h-section tt">Seu material é seu. <strong>Isso está no banco, não no marketing.</strong></h2>
+    </div>
+
+    <div class="grid grid--4 reveal">
+      <article class="card">
+        <span class="card__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 3l7.5 3v6c0 4.5-3 8.1-7.5 9.5C7.5 20.1 4.5 16.5 4.5 12V6z"></path></svg>
+        </span>
+        <h3 class="h-card">Row Level Security</h3>
+        <p class="muted">Todas as tabelas têm RLS: cada conta só alcança os próprios dados, no nível do banco.</p>
+      </article>
+      <article class="card">
+        <span class="card__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="8" cy="12" r="4"></circle><path d="M12 12h9M17.5 12v3.5M20.5 12v2.5"></path></svg>
+        </span>
+        <h3 class="h-card">Chave da IA no servidor</h3>
+        <p class="muted">Nenhum segredo viaja no aplicativo. As chaves ficam nas Edge Functions, fora do bundle.</p>
+      </article>
+      <article class="card">
+        <span class="card__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9.5 7V4.5h5V7M6.5 7l1 13h9l1-13"></path></svg>
+        </span>
+        <h3 class="h-card">Exclusão dentro do app</h3>
+        <p class="muted">Apagar a conta é um botão, e o apagamento é de ponta a ponta — como a Apple exige.</p>
+      </article>
+      <article class="card">
+        <span class="card__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V8M12 8l-3 3M12 8l3 3"></path><path d="M4.5 15A4 4 0 0 1 6 7.4a5.5 5.5 0 0 1 10.6-.7A4.2 4.2 0 0 1 19.5 15"></path></svg>
+        </span>
+        <h3 class="h-card">Dito com todas as letras</h3>
+        <p class="muted">O material enviado é processado por IA de terceiros (Anthropic e Google). Está escrito na política, sem letra miúda.</p>
+      </article>
+    </div>
+
+    <p class="reveal" style="text-align:center;margin-top:32px">
+      <a class="btn btn--ghost" href="privacidade.html">
+        Ler a Política de Privacidade
+        <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </a>
+    </p>
+  </div>
+</section>
+
+<!-- ===================== DEPOIMENTOS ===================== -->
+<!--
+  ATENÇÃO — os depoimentos abaixo são CONTEÚDO DE EXEMPLO.
+  O app ainda não lançou e o LANDING_BRIEF.md §4 é explícito: não inventar prova
+  social. Antes de publicar, escolha uma das duas saídas:
+    a) substituir por depoimentos reais (com autorização de quem escreveu) e
+       remover o parágrafo .placeholder-note ao final da seção; ou
+    b) apagar esta seção inteira e o link "Depoimentos" no menu.
+-->
+<section class="section" id="depoimentos">
+  <div class="wrap">
+    <div class="section-head section-head--center reveal">
+      <p class="eyebrow">Depoimentos</p>
+      <h2 class="h-section tt">Quem estuda com o Blink <strong>conta como foi</strong>.</h2>
+    </div>
+
+    <div class="reveal">
+      <div class="tcols">
+        <div class="tcol tcol--1">
+          <div class="tcol__track" style="--dur:15s">
+            <figure class="tcard">
+              <blockquote class="tcard__text">Joguei o PDF de 60 páginas da aula e voltaram 40 cards já com os gráficos do próprio material. Era exatamente o que eu passava o domingo fazendo à mão.</blockquote>
+              <figcaption class="tcard__who">
+                <span class="tavatar" aria-hidden="true">MR</span>
+                <span>
+                  <span class="tcard__name">Marina R.</span>
+                  <span class="tcard__role">Medicina, 4º ano</span>
+                </span>
+              </figcaption>
+            </figure>
+            <figure class="tcard">
+              <blockquote class="tcard__text">Larguei o Anki porque eu perdia mais tempo configurando do que revisando. Aqui é só errei ou entendi, e o resto ele resolve.</blockquote>
+              <figcaption class="tcard__who">
+                <span class="tavatar" aria-hidden="true">DF</span>
+                <span>
+                  <span class="tcard__name">Diego F.</span>
+                  <span class="tcard__role">Concurseiro</span>
+                </span>
+              </figcaption>
+            </figure>
+            <figure class="tcard">
+              <blockquote class="tcard__text">As figuras virarem card mudou meu estudo de anatomia. Reconhecer a imagem já é metade da prova.</blockquote>
+              <figcaption class="tcard__who">
+                <span class="tavatar" aria-hidden="true">CS</span>
+                <span>
+                  <span class="tcard__name">Camila S.</span>
+                  <span class="tcard__role">Medicina, 2º ano</span>
+                </span>
+              </figcaption>
+            </figure>
+            <figure class="tcard" aria-hidden="true">
+              <blockquote class="tcard__text">Joguei o PDF de 60 páginas da aula e voltaram 40 cards já com os gráficos do próprio material. Era exatamente o que eu passava o domingo fazendo à mão.</blockquote>
+              <figcaption class="tcard__who">
+                <span class="tavatar" aria-hidden="true">MR</span>
+                <span>
+                  <span class="tcard__name">Marina R.</span>
+                  <span class="tcard__role">Medicina, 4º ano</span>
+                </span>
+              </figcaption>
+            </figure>
+            <figure class="tcard" aria-hidden="true">
+              <blockquote class="tcard__text">Larguei o Anki porque eu perdia mais tempo configurando do que revisando. Aqui é só errei ou entendi, e o resto ele resolve.</blockquote>
+              <figcaption class="tcard__who">
+                <span class="tavatar" aria-hidden="true">DF</span>
+                <span>
+                  <span class="tcard__name">Diego F.</span>
+                  <span class="tcard__role">Concurseiro</span>
+                </span>
+              </figcaption>
+            </figure>
+            <figure class="tcard" aria-hidden="true">
+              <blockquote class="tcard__text">As figuras virarem card mudou meu estudo de anatomia. Reconhecer a imagem já é metade da prova.</blockquote>
+              <figcaption class="tcard__who">
+                <span class="tavatar" aria-hidden="true">CS</span>
+                <span>
+                  <span class="tcard__name">Camila S.</span>
+                  <span class="tcard__role">Medicina, 2º ano</span>
+                </span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="tcol tcol--2">
+          <div class="tcol__track" style="--dur:19s">
+            <figure class="tcard">
+              <blockquote class="tcard__text">Uso o modo Escrever para treinar resposta discursiva. A correção entende o sentido em vez de exigir a palavra exata.</blockquote>
+              <figcaption class="tcard__who">
+                <span class="tavatar" aria-hidden="true">RM</span>
+                <span>
+                  <span class="tcard__name">Rafael M.</span>
+                  <span class="tcard__role">Direito, 5º período</span>
+                </span>
+              </figcaption>
+            </figure>
+            <figure class="tcard">
+              <blockquote class="tcard__text">A sequência me pegou. Quarenta dias sem falhar, coisa que planilha nenhuma tinha conseguido antes.</blockquote>
+              <figcaption class="tcard__who">
+                <span class="tavatar" aria-hidden="true">LA</span>
+                <span>
+                  <span class="tcard__name">Letícia A.</span>
+                  <span class="tcard__role">Enfermagem</span>
+                </span>
+              </figcaption>
+            </figure>
+            <figure class="tcard">
+              <blockquote class="tcard__text">Subo o slide do professor antes da aula e chego na sala com os cards prontos. Virou parte da rotina.</blockquote>
+              <figcaption class="tcard__who">
+                <span class="tavatar" aria-hidden="true">BT</span>
+                <span>
+                  <span class="tcard__name">Bruno T.</span>
+                  <span class="tcard__role">Engenharia Elétrica</span>
+                </span>
+              </figcaption>
+            </figure>
+            <figure class="tcard" aria-hidden="true">
+              <blockquote class="tcard__text">Uso o modo Escrever para treinar resposta discursiva. A correção entende o sentido em vez de exigir a palavra exata.</blockquote>
+              <figcaption class="tcard__who">
+                <span class="tavatar" aria-hidden="true">RM</span>
+                <span>
+                  <span class="tcard__name">Rafael M.</span>
+                  <span class="tcard__role">Direito, 5º período</span>
+                </span>
+              </figcaption>
+            </figure>
+            <figure class="tcard" aria-hidden="true">
+              <blockquote class="tcard__text">A sequência me pegou. Quarenta dias sem falhar, coisa que planilha nenhuma tinha conseguido antes.</blockquote>
+              <figcaption class="tcard__who">
+                <span class="tavatar" aria-hidden="true">LA</span>
+                <span>
+                  <span class="tcard__name">Letícia A.</span>
+                  <span class="tcard__role">Enfermagem</span>
+                </span>
+              </figcaption>
+            </figure>
+            <figure class="tcard" aria-hidden="true">
+              <blockquote class="tcard__text">Subo o slide do professor antes da aula e chego na sala com os cards prontos. Virou parte da rotina.</blockquote>
+              <figcaption class="tcard__who">
+                <span class="tavatar" aria-hidden="true">BT</span>
+                <span>
+                  <span class="tcard__name">Bruno T.</span>
+                  <span class="tcard__role">Engenharia Elétrica</span>
+                </span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+        <div class="tcol tcol--3">
+          <div class="tcol__track" style="--dur:17s">
+            <figure class="tcard">
+              <blockquote class="tcard__text">Baixei um deck da comunidade na véspera e ainda deu tempo de revisar tudo pelo menos uma vez.</blockquote>
+              <figcaption class="tcard__who">
+                <span class="tavatar" aria-hidden="true">AP</span>
+                <span>
+                  <span class="tcard__name">Aline P.</span>
+                  <span class="tcard__role">Vestibulanda</span>
+                </span>
+              </figcaption>
+            </figure>
+            <figure class="tcard">
+              <blockquote class="tcard__text">Quiz e flashcard alternados quebram aquele automático de decorar a posição da resposta na tela.</blockquote>
+              <figcaption class="tcard__who">
+                <span class="tavatar" aria-hidden="true">TN</span>
+                <span>
+                  <span class="tcard__name">Thiago N.</span>
+                  <span class="tcard__role">Residência médica</span>
+                </span>
+              </figcaption>
+            </figure>
+            <figure class="tcard">
+              <blockquote class="tcard__text">Meta de 30 cards por dia, cinco minutos na fila do bandejão. É o único app de estudo que eu abro sem culpa.</blockquote>
+              <figcaption class="tcard__who">
+                <span class="tavatar" aria-hidden="true">JC</span>
+                <span>
+                  <span class="tcard__name">Júlia C.</span>
+                  <span class="tcard__role">Farmácia</span>
+                </span>
+              </figcaption>
+            </figure>
+            <figure class="tcard" aria-hidden="true">
+              <blockquote class="tcard__text">Baixei um deck da comunidade na véspera e ainda deu tempo de revisar tudo pelo menos uma vez.</blockquote>
+              <figcaption class="tcard__who">
+                <span class="tavatar" aria-hidden="true">AP</span>
+                <span>
+                  <span class="tcard__name">Aline P.</span>
+                  <span class="tcard__role">Vestibulanda</span>
+                </span>
+              </figcaption>
+            </figure>
+            <figure class="tcard" aria-hidden="true">
+              <blockquote class="tcard__text">Quiz e flashcard alternados quebram aquele automático de decorar a posição da resposta na tela.</blockquote>
+              <figcaption class="tcard__who">
+                <span class="tavatar" aria-hidden="true">TN</span>
+                <span>
+                  <span class="tcard__name">Thiago N.</span>
+                  <span class="tcard__role">Residência médica</span>
+                </span>
+              </figcaption>
+            </figure>
+            <figure class="tcard" aria-hidden="true">
+              <blockquote class="tcard__text">Meta de 30 cards por dia, cinco minutos na fila do bandejão. É o único app de estudo que eu abro sem culpa.</blockquote>
+              <figcaption class="tcard__who">
+                <span class="tavatar" aria-hidden="true">JC</span>
+                <span>
+                  <span class="tcard__name">Júlia C.</span>
+                  <span class="tcard__role">Farmácia</span>
+                </span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <p class="placeholder-note">Conteúdo de exemplo — substituir por depoimentos reais antes de publicar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PLANOS ===================== -->
+<section class="section section--alt" id="planos">
+  <div class="wrap">
+    <div class="section-head section-head--center reveal">
+      <p class="eyebrow">Planos</p>
+      <h2 class="h-section tt">Comece de graça. <strong>Sem cartão, sem pegadinha.</strong></h2>
+    </div>
+
+    <div class="plans reveal">
+      <article class="card plan">
+        <h3 class="h-card">Free</h3>
+        <p class="plan__price">R$ 0<sub> / para sempre</sub></p>
+        <ul class="checklist">
+          <li><span class="tick" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4 10-10"></path></svg></span><span><b>300 gerações por IA</b> a cada mês</span></li>
+          <li><span class="tick" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4 10-10"></path></svg></span><span>Decks e cards <b>sem limite</b> criados por você</span></li>
+          <li><span class="tick" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4 10-10"></path></svg></span><span>Os <b>4 modos de prática</b> e a repetição espaçada</span></li>
+          <li><span class="tick" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4 10-10"></path></svg></span><span>Comunidade, conquistas e sincronização entre aparelhos</span></li>
+        </ul>
+        <div class="plan__foot">
+          <a class="btn btn--ghost" href="#lista-de-espera">Quero ser avisado</a>
+        </div>
+      </article>
+
+      <article class="card plan plan--pro">
+        <h3 class="h-card">Pro</h3>
+        <p class="plan__price">Em breve<sub> · preço a definir</sub></p>
+        <ul class="checklist">
+          <li><span class="tick" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4 10-10"></path></svg></span><span>Tudo do Free, com <b>folga de sobra nas gerações por IA</b></span></li>
+          <li><span class="tick" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4 10-10"></path></svg></span><span>Pensado para <b>semestre inteiro de material</b> em vez de uma aula</span></li>
+          <li><span class="tick" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4 10-10"></path></svg></span><span>Quem estiver na lista de espera <b>fica sabendo antes</b></span></li>
+        </ul>
+        <div class="plan__foot">
+          <a class="btn btn--solid" href="#lista-de-espera" style="background:var(--on-invert);color:var(--invert)">Entrar na lista</a>
+        </div>
+      </article>
+    </div>
+
+    <p class="small muted reveal" style="text-align:center;margin-top:24px">
+      O limite de gerações é verificado no servidor — nunca no aparelho.
+    </p>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="section-head section-head--center reveal">
+      <p class="eyebrow">Perguntas</p>
+      <h2 class="h-section tt">O que <strong>sempre perguntam</strong>.</h2>
+    </div>
+
+    <div class="faq reveal">
+      <details open>
+        <summary>Isso é só um Anki mais bonito?
+          <svg class="plus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+        </summary>
+        <p>O motor é da mesma família: SM-2, o algoritmo que o Anki usa. A diferença está nas pontas.
+          De um lado, o Blink monta o deck a partir do seu arquivo, com as figuras dele. Do outro, a avaliação
+          é binária — <em>Errei</em> ou <em>Entendi</em> — em vez de quatro botões que exigem calibrar o quanto você lembrou.</p>
+      </details>
+      <details>
+        <summary>Meus arquivos ficam guardados?
+          <svg class="plus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+        </summary>
+        <p>O material é enviado para processamento por IA de terceiros (Anthropic, com fallback para Google) e o que
+          fica na sua conta são os cards gerados e as imagens que você aprovou. Cada conta só acessa os próprios dados,
+          garantido por Row Level Security no banco. Os detalhes estão na <a href="privacidade.html">Política de Privacidade</a>.</p>
+      </details>
+      <details>
+        <summary>Funciona offline?
+          <svg class="plus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+        </summary>
+        <p>Gerar cards com IA e sincronizar entre aparelhos precisam de internet — o processamento acontece no servidor.
+          A geração é o momento que exige conexão; o estudo em si é leve e local.</p>
+      </details>
+      <details>
+        <summary>Quanto custa?
+          <svg class="plus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+        </summary>
+        <p>O plano Free é gratuito e inclui 300 gerações por IA por mês, além de decks e cards ilimitados criados por você.
+          O preço do Pro ainda não foi definido — quem entrar na lista de espera fica sabendo primeiro.</p>
+      </details>
+      <details>
+        <summary>Que tipo de arquivo posso enviar?
+          <svg class="plus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+        </summary>
+        <p>PDF, PowerPoint (.pptx), Word (.docx) e imagem. Também dá para colar um texto ou simplesmente digitar o tópico.
+          O limite por arquivo é de 25 MB e 80 páginas ou slides; se passar disso, o Blink processa o que couber e avisa
+          em vez de falhar.</p>
+      </details>
+      <details>
+        <summary>Consigo levar meus decks embora?
+          <svg class="plus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+        </summary>
+        <p>Sim. Decks que são seus podem ser exportados e importados em arquivo, com resolução de conflito
+          (copiar, pular ou substituir) quando algo já existir. Decks baixados da comunidade seguem a licença
+          escolhida por quem publicou.</p>
+      </details>
+      <details>
+        <summary>Está em português?
+          <svg class="plus" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>
+        </summary>
+        <p>Toda a interface é em português brasileiro, do onboarding às conquistas. E o app é feito para celular,
+          em iOS e Android.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA / LISTA DE ESPERA ===================== -->
+<section class="section" id="lista-de-espera">
+  <div class="wrap">
+    <div class="cta reveal">
+      <p class="eyebrow">Lançamento</p>
+      <h2 class="h-section tt">O Blink está a caminho. <strong>Quer saber quando chegar?</strong></h2>
+      <p class="lead" style="max-width:52ch;margin-inline:auto">Deixe seu e-mail e avisamos no dia em que o app entrar
+        na App Store e no Google Play. Nada além disso.</p>
+
+      <form class="cta__form" data-waitlist novalidate>
+        <input type="email" name="email" placeholder="seu@email.com" aria-label="Seu e-mail" autocomplete="email" required>
+        <button class="btn btn--solid" type="submit">
+          Avise-me
+          <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </button>
+      </form>
+      <p class="form-msg" role="status" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== RODAPÉ ===================== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a class="brand" href="#top">
+          <span class="brand__mark" aria-hidden="true">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <path d="M2.5 13.5c3.2 4.2 15.8 4.2 19 0"></path>
+              <path d="M5.4 17.2 4.2 19.4M12 18.6V21M18.6 17.2l1.2 2.2"></path>
+            </svg>
+          </span>
+          <span class="brand__word">Blink</span>
+        </a>
+        <p>Flashcards com repetição espaçada, feitos a partir do seu próprio material. Para iOS e Android.</p>
+      </div>
+
+      <div class="footer__col">
+        <h4>Produto</h4>
+        <ul>
+          <li><a href="#como-funciona">Como funciona</a></li>
+          <li><a href="#modos">Modos de prática</a></li>
+          <li><a href="#progresso">Progresso</a></li>
+          <li><a href="#comunidade">Comunidade</a></li>
+          <li><a href="#planos">Planos</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacidade.html">Política de Privacidade</a></li>
+          <li><a href="termos.html">Termos de Uso</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h4>Suporte</h4>
+        <ul>
+          <li><a href="mailto:blinkflashcards@gmail.com">blinkflashcards@gmail.com</a></li>
+          <li><a href="#faq">Perguntas frequentes</a></li>
+          <li><a href="#lista-de-espera">Lista de espera</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© <span data-year>2026</span> Blink. Todos os direitos reservados.</span>
+      <span>Feito no Brasil · versão 1.0.0</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
