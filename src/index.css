@@ -1,0 +1,44 @@
+@import "tailwindcss";
+@import "./styles/blink.css";
+
+/* O tema é carimbado em <html data-theme="dark"> pelo script do index.html,
+   então a variante `dark:` do Tailwind precisa olhar para esse atributo. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* Ponte entre os nomes que o shadcn/21st.dev usam e os tokens do Blink,
+   definidos em styles/blink.css. Trocar a paleta continua sendo editar lá. */
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--text);
+
+  --color-popover: var(--card-hi);
+  --color-popover-foreground: var(--text);
+
+  --color-primary: var(--invert);
+  --color-primary-foreground: var(--on-invert);
+
+  --color-secondary: var(--surface);
+  --color-secondary-foreground: var(--text);
+
+  --color-muted: var(--surface);
+  --color-muted-foreground: var(--text-2);
+
+  --color-accent: var(--gold);
+  --color-accent-foreground: var(--on-invert);
+
+  --color-destructive: var(--error);
+  --color-destructive-foreground: var(--on-invert);
+
+  --color-border: var(--line-soft);
+  --color-input: var(--line);
+  --color-ring: var(--text-2);
+
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+
+  /* O sistema tem um raio só: 26px em tudo que é card, tag, input e botão. */
+  --radius-3xl: var(--radius);
+}
