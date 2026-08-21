@@ -4,21 +4,8 @@ import type { AccordionItem } from "@/components/ui/interactive-accordion";
 /** Perguntas frequentes. `content` é ReactNode para permitir links e ênfases. */
 export const perguntasFrequentes: AccordionItem[] = [
   {
-    id: "anki",
-    number: "01",
-    title: "Isso é só um Anki mais bonito?",
-    content: (
-      <p>
-        O motor é da mesma família: SM-2, o algoritmo que o Anki usa. A diferença está nas pontas.
-        De um lado, o Blink monta o deck a partir do seu arquivo, com as figuras dele. Do outro, a
-        avaliação é binária — <em>Errei</em> ou <em>Entendi</em> — em vez de quatro botões que
-        exigem calibrar o quanto você lembrou.
-      </p>
-    ),
-  },
-  {
     id: "arquivos",
-    number: "02",
+    number: "01",
     title: "Meus arquivos ficam guardados?",
     content: (
       <p>
@@ -33,7 +20,7 @@ export const perguntasFrequentes: AccordionItem[] = [
   },
   {
     id: "offline",
-    number: "03",
+    number: "02",
     title: "Funciona offline?",
     content: (
       <p>
@@ -45,7 +32,7 @@ export const perguntasFrequentes: AccordionItem[] = [
   },
   {
     id: "preco",
-    number: "04",
+    number: "03",
     title: "Quanto custa?",
     content: (
       <p>
@@ -57,7 +44,7 @@ export const perguntasFrequentes: AccordionItem[] = [
   },
   {
     id: "formatos",
-    number: "05",
+    number: "04",
     title: "Que tipo de arquivo posso enviar?",
     content: (
       <p>
@@ -69,7 +56,7 @@ export const perguntasFrequentes: AccordionItem[] = [
   },
   {
     id: "exportar",
-    number: "06",
+    number: "05",
     title: "Consigo levar meus decks embora?",
     content: (
       <p>
@@ -81,7 +68,7 @@ export const perguntasFrequentes: AccordionItem[] = [
   },
   {
     id: "idioma",
-    number: "07",
+    number: "06",
     title: "Está em português?",
     content: (
       <p>

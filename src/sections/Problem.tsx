@@ -21,8 +21,8 @@ export function Problem() {
               <span className="card__icon" aria-hidden="true">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M10.3 3.5h3.4l.5 2.4 2.1 1.2 2.3-.8 1.7 3-1.8 1.6v2.2l1.8 1.6-1.7 3-2.3-.8-2.1 1.2-.5 2.4h-3.4l-.5-2.4-2.1-1.2-2.3.8-1.7-3 1.8-1.6v-2.2L3.7 9.3l1.7-3 2.3.8 2.1-1.2z" /><circle cx="12" cy="12" r="2.6" /></svg>
               </span>
-              <h3 className="h-card">Configurar o Anki vira projeto paralelo</h3>
-              <p className="muted">Add-ons, perfis, quatro botões de avaliação. Poder de sobra para quem só quer revisar direito.</p>
+              <h3 className="h-card">Configurar o app vira projeto paralelo</h3>
+              <p className="muted">Extensões, perfis, escalas de avaliação com quatro níveis. Poder de sobra para quem só quer revisar direito.</p>
             </article>
             <article className="card">
               <span className="card__icon" aria-hidden="true">

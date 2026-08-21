@@ -11,7 +11,6 @@ import { SpacedRepetition } from "@/sections/SpacedRepetition";
 import { Modes } from "@/sections/Modes";
 import { Progress } from "@/sections/Progress";
 import { Community } from "@/sections/Community";
-import { Privacy } from "@/sections/Privacy";
 import { Testimonials } from "@/sections/Testimonials";
 import { Plans } from "@/sections/Plans";
 import { Faq } from "@/sections/Faq";
@@ -33,7 +32,6 @@ export default function Home() {
         <Modes />
         <Progress />
         <Community />
-        <Privacy />
         <Testimonials />
         <Plans />
         <Faq />

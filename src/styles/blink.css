@@ -330,18 +330,28 @@ ul { margin: 0; padding: 0; list-style: none; }
   border: 1px solid var(--line); color: var(--text-2);
 }
 
-/* ---------- Planos ---------- */
-.plans { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gap); max-width: 860px; margin-inline: auto; }
-.plan { display: flex; flex-direction: column; }
-.plan--pro { background: var(--invert); color: var(--on-invert); border-color: var(--invert); }
-.plan--pro .muted, .plan--pro .checklist li { color: color-mix(in srgb, var(--on-invert) 70%, transparent); }
-.plan--pro .checklist li b { color: var(--on-invert); }
-.plan--pro .checklist .tick { background: var(--on-invert); color: var(--invert); }
-.plan__price { font-family: var(--font-display); font-weight: 800; font-size: 44px; line-height: 1.1; letter-spacing: -0.03em; }
-.plan__price sub { font-family: var(--font-body); font-size: 15px; font-weight: 400; vertical-align: baseline; color: var(--text-2); }
-.plan--pro .plan__price sub { color: color-mix(in srgb, var(--on-invert) 65%, transparent); }
-.plan > .checklist { margin-top: 24px; }
-.plan__foot { margin-top: auto; padding-top: 28px; }
+/* ---------- Slider do calculador de plano ----------
+   Escopado em .blink-range de propósito: um seletor solto em
+   input[type=range] pegaria qualquer outro controle da página. */
+.blink-range { -webkit-appearance: none; appearance: none; }
+.blink-range::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 26px; height: 26px;
+  background: var(--card-hi);
+  border: 2px solid var(--line);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+.blink-range::-moz-range-thumb {
+  width: 22px; height: 22px;
+  background: var(--card-hi);
+  border: 2px solid var(--line);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+.blink-range:focus-visible { outline: 2px solid var(--text-2); outline-offset: 4px; }
 
 /* Avatar de depoimento sem foto: as iniciais de quem escreveu.
    Usado por components/ui/testimonials-columns-1.tsx. */
@@ -443,7 +453,7 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 @media (max-width: 760px) {
   :root { --section-gap: 64px; --card-pad: 24px; }
-  .grid--2, .grid--3, .plans { grid-template-columns: 1fr; }
+  .grid--2, .grid--3 { grid-template-columns: 1fr; }
   .stats { grid-template-columns: repeat(2, 1fr); }
   .hero { padding-top: 48px; }
   .mockup-fan { margin-top: 48px; }

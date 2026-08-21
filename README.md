@@ -68,6 +68,7 @@ Já integrados em `src/components/ui/`:
 | --- | --- | --- |
 | `testimonials-columns-1.tsx` | seção Depoimentos | 21st.dev |
 | `interactive-accordion.tsx` | seção FAQ | 21st.dev |
+| `pricing-slider-loops.tsx` | seção Planos | 21st.dev |
 
 ## Sistema visual
 
@@ -99,6 +100,14 @@ O tema é carimbado em `<html data-theme="…">` por um script inline no `index.
 antes da primeira pintura, para não piscar. A variante `dark:` do Tailwind está
 ligada a esse mesmo atributo via `@custom-variant`.
 
+**Cuidado com a ordem das camadas.** O `blink.css` é importado com
+`layer(components)`, e isso não é decorativo: CSS fora de qualquer `@layer` vence
+*qualquer* regra dentro de uma layer, então o reset daqui (`p { margin: 0 }`,
+`a { color: inherit }`, `img { display: block }`) passaria por cima dos utilitários
+do Tailwind — um `mb-8` num `<p>` simplesmente não teria efeito. Em `components` a
+precedência fica certa: o reset ainda vence o preflight, e as utilities vencem o
+reset. Se algum dia um utilitário do Tailwind parecer ignorado, é aqui que se olha.
+
 ## Mockups
 
 Capturas reais do app, em `public/assets/mockups/` — WebP com fundo transparente e a
@@ -127,8 +136,9 @@ Para trocar uma tela, basta substituir o arquivo mantendo a proporção 700×142
    e é permanente após a primeira publicação nas lojas.
 3. **Lista de espera.** Hoje o formulário abre o cliente de e-mail do visitante
    (`mailto:`). Trocar pelo provedor escolhido em `src/sections/WaitlistCta.tsx`.
-4. **Preço do Pro.** A seção de planos mostra "em breve"; o texto do card e a
-   seção 8 dos Termos precisam de ajuste quando o preço existir.
+4. **Preço do Pro.** Definir e preencher `precoMensal` em `src/data/pricing.ts`
+   (hoje `null`, que faz o card mostrar "Em breve"). Ajustar também a seção 8 dos
+   Termos. As faixas do slider — `FAIXAS_DE_USO` — estão no mesmo arquivo.
 5. **Links das lojas.** Os badges estão com selo "em breve" e sem `href`.
    Trocar os `<span className="store-badge">` por `<a>` quando os links saírem.
 6. **Ícones do app.** Copiar `blink_favicon.png` e o ícone 1024 para

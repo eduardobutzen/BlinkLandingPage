@@ -1,5 +1,9 @@
 @import "tailwindcss";
-@import "./styles/blink.css";
+/* Precisa entrar numa layer: CSS sem layer vence QUALQUER @layer, e o reset
+   daqui (`p { margin: 0 }` e afins) passaria por cima dos utilitários do
+   Tailwind. Em `components` ele ainda vence o preflight, mas perde para as
+   utilities — que é a precedência esperada. */
+@import "./styles/blink.css" layer(components);
 
 /* O tema é carimbado em <html data-theme="dark"> pelo script do index.html,
    então a variante `dark:` do Tailwind precisa olhar para esse atributo. */

@@ -20,7 +20,7 @@ export const testimonials: Testimonial[] = [
     role: "Medicina, 4º ano",
   },
   {
-    text: "Larguei o Anki porque eu perdia mais tempo configurando do que revisando. Aqui é só errei ou entendi, e o resto ele resolve.",
+    text: "Eu perdia mais tempo configurando o sistema de revisão do que revisando. Aqui é só errei ou entendi, e o resto ele resolve.",
     name: "Diego F.",
     role: "Concurseiro",
   },
