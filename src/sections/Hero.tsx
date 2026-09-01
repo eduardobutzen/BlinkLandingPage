@@ -1,9 +1,22 @@
 import { StoreBadges } from "@/components/StoreBadges";
+import { DotPattern } from "@/components/ui/dot-pattern";
 
 export function Hero() {
   return (
     <>
       <section className="section hero">
+        {/* Textura de fundo: o fill sai do token do tema (não de slate-*), e a
+            máscara concentra os pontos no topo, atrás do título, para que eles
+            sumam antes do leque de mockups. */}
+        <DotPattern
+          width={20}
+          height={20}
+          cx={1}
+          cy={1}
+          cr={1}
+          className="fill-[var(--text-3)] opacity-50 md:fill-[var(--text-3)] [mask-image:radial-gradient(ellipse_75%_55%_at_50%_0%,white,transparent)]"
+        />
+
         <div className="wrap hero__inner">
           <h1 className="h-display tt">Seu material vira <strong>deck de flashcards</strong> em segundos.</h1>
 

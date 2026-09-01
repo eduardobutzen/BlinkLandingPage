@@ -6,6 +6,7 @@ const PRODUTO = [
   { href: "/#recursos", rotulo: "Recursos" },
   { href: "/#depoimentos", rotulo: "Depoimentos" },
   { href: "/#planos", rotulo: "Planos" },
+  { href: "/#faq", rotulo: "FAQ" },
 ];
 
 export function Footer() {
@@ -54,6 +55,9 @@ export function Footer() {
             <ul>
               <li>
                 <a href={`mailto:${EMAIL_SUPORTE}`}>{EMAIL_SUPORTE}</a>
+              </li>
+              <li>
+                <a href="/#faq">Perguntas frequentes</a>
               </li>
               <li>
                 <a href="/#baixar">Baixar o app</a>

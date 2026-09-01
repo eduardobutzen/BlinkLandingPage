@@ -205,8 +205,10 @@ ul { margin: 0; padding: 0; list-style: none; }
 :root[data-theme="dark"] .icon-btn .icon-moon { display: block; }
 
 /* ---------- Hero ---------- */
-/* Fecha na faixa de passos, não mais no leque de mockups: daí o respiro embaixo. */
-.hero { padding-top: 72px; padding-bottom: var(--section-gap); text-align: center; }
+/* Fecha na faixa de passos, não mais no leque de mockups: daí o respiro embaixo.
+   `position: relative` ancora o DotPattern, que é absolute. */
+.hero { position: relative; padding-top: 72px; padding-bottom: var(--section-gap); text-align: center; }
+.hero__inner { position: relative; z-index: 1; }
 .hero__inner > * + * { margin-top: 24px; }
 .hero h1 { max-width: 16ch; margin-inline: auto; }
 .hero .lead { max-width: 56ch; margin-inline: auto; }

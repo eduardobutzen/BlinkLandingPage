@@ -7,6 +7,7 @@ const NAV = [
   { href: "#recursos", rotulo: "Recursos" },
   { href: "#depoimentos", rotulo: "Depoimentos" },
   { href: "#planos", rotulo: "Planos" },
+  { href: "#faq", rotulo: "FAQ" },
 ];
 
 /** `enxuto` é o cabeçalho das páginas legais: sem menu, com volta para a home. */
