@@ -3,10 +3,8 @@ import { BlinkMark } from "@/components/BlinkMark";
 import { EMAIL_SUPORTE } from "@/data/site";
 
 const PRODUTO = [
-  { href: "/#como-funciona", rotulo: "Como funciona" },
-  { href: "/#modos", rotulo: "Modos de prática" },
-  { href: "/#progresso", rotulo: "Progresso" },
-  { href: "/#comunidade", rotulo: "Comunidade" },
+  { href: "/#recursos", rotulo: "Recursos" },
+  { href: "/#depoimentos", rotulo: "Depoimentos" },
   { href: "/#planos", rotulo: "Planos" },
 ];
 
@@ -23,8 +21,8 @@ export function Footer() {
               <span className="brand__word">Blink</span>
             </Link>
             <p>
-              Flashcards com repetição espaçada, feitos a partir do seu próprio material. Para iOS e
-              Android.
+              Flashcards com repetição espaçada, feitos a partir do seu próprio material.
+              Disponível para iOS e Android.
             </p>
           </div>
 
@@ -58,10 +56,7 @@ export function Footer() {
                 <a href={`mailto:${EMAIL_SUPORTE}`}>{EMAIL_SUPORTE}</a>
               </li>
               <li>
-                <a href="/#faq">Perguntas frequentes</a>
-              </li>
-              <li>
-                <a href="/#lista-de-espera">Lista de espera</a>
+                <a href="/#baixar">Baixar o app</a>
               </li>
             </ul>
           </div>

@@ -155,31 +155,22 @@ ul { margin: 0; padding: 0; list-style: none; }
 .btn .arrow { transition: transform .18s ease; }
 .btn:hover .arrow { transform: translateX(3px); }
 
-/* Badges das lojas — estado "em breve" */
-.store-badges { display: flex; flex-wrap: wrap; gap: 12px; }
+/* Badges das lojas — links de download */
+.store-badges { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
 .store-badge {
   display: inline-flex; align-items: center; gap: 12px;
   padding: 12px 22px 12px 18px;
   border-radius: var(--radius);
   background: var(--invert); color: var(--on-invert);
   min-height: 56px;
-  position: relative;
-  opacity: .55;
-  cursor: default;
+  transition: opacity .18s ease, transform .18s ease;
 }
+.store-badge:hover { opacity: .88; transform: translateY(-1px); }
+.store-badge:focus-visible { outline: 2px solid var(--text-2); outline-offset: 3px; }
 .store-badge svg { flex: none; }
 .store-badge span { display: block; }
 .store-badge .s1 { font-size: 11px; line-height: 1.2; opacity: .8; }
 .store-badge .s2 { font-family: var(--font-display); font-weight: 700; font-size: 17px; line-height: 1.25; }
-.store-badge::after {
-  content: "em breve";
-  position: absolute; top: -9px; right: 12px;
-  font-family: var(--font-display); font-weight: 700; font-size: 10px;
-  letter-spacing: .1em; text-transform: uppercase;
-  background: var(--bg); color: var(--text-2);
-  border: 1px solid var(--line);
-  padding: 2px 8px; border-radius: var(--radius-pill);
-}
 
 /* ---------- Header (liquid glass) ---------- */
 .header {
@@ -214,7 +205,8 @@ ul { margin: 0; padding: 0; list-style: none; }
 :root[data-theme="dark"] .icon-btn .icon-moon { display: block; }
 
 /* ---------- Hero ---------- */
-.hero { padding-top: 72px; padding-bottom: 0; text-align: center; }
+/* Fecha na faixa de passos, não mais no leque de mockups: daí o respiro embaixo. */
+.hero { padding-top: 72px; padding-bottom: var(--section-gap); text-align: center; }
 .hero__inner > * + * { margin-top: 24px; }
 .hero h1 { max-width: 16ch; margin-inline: auto; }
 .hero .lead { max-width: 56ch; margin-inline: auto; }
@@ -300,6 +292,25 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 
 /* ---------- Passos ---------- */
+/* Faixa compacta dentro do herói, no lugar da antiga seção "Como funciona". */
+.hero .steps-strip {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap);
+  margin-top: 72px; text-align: left;
+}
+.steps-strip li {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: var(--card); border: 1px solid var(--line-soft);
+  border-radius: var(--radius); padding: 22px 24px;
+}
+.steps-strip li > span:last-child { display: grid; gap: 2px; }
+.steps-strip b { font-family: var(--font-display); font-weight: 700; }
+.steps-strip__n {
+  width: 30px; height: 30px; border-radius: var(--radius-pill); flex: none;
+  border: 1px solid var(--line); display: grid; place-items: center;
+  font-family: var(--font-display); font-weight: 800; font-size: var(--text-caption);
+  color: var(--text);
+}
+
 .step__n {
   width: 44px; height: 44px; border-radius: var(--radius-pill);
   border: 1px solid var(--line); display: grid; place-items: center;
@@ -454,8 +465,9 @@ ul { margin: 0; padding: 0; list-style: none; }
 @media (max-width: 760px) {
   :root { --section-gap: 64px; --card-pad: 24px; }
   .grid--2, .grid--3 { grid-template-columns: 1fr; }
+  .hero .steps-strip { grid-template-columns: 1fr; margin-top: 48px; }
   .stats { grid-template-columns: repeat(2, 1fr); }
-  .hero { padding-top: 48px; }
+  .hero { padding-top: 48px; padding-bottom: 64px; }
   .mockup-fan { margin-top: 48px; }
   .mockup-fan .shot:nth-child(1), .mockup-fan .shot:nth-child(3) { display: none; }
   .cta { padding: 44px 24px; }

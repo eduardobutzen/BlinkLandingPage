@@ -3,18 +3,10 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
 import { Hero } from "@/sections/Hero";
-import { Numbers } from "@/sections/Numbers";
-import { Problem } from "@/sections/Problem";
-import { HowItWorks } from "@/sections/HowItWorks";
-import { Figures } from "@/sections/Figures";
-import { SpacedRepetition } from "@/sections/SpacedRepetition";
-import { Modes } from "@/sections/Modes";
-import { Progress } from "@/sections/Progress";
-import { Community } from "@/sections/Community";
+import { Features } from "@/sections/Features";
 import { Testimonials } from "@/sections/Testimonials";
 import { Plans } from "@/sections/Plans";
-import { Faq } from "@/sections/Faq";
-import { WaitlistCta } from "@/sections/WaitlistCta";
+import { DownloadCta } from "@/sections/DownloadCta";
 
 export default function Home() {
   useScrollReveal();
@@ -24,18 +16,10 @@ export default function Home() {
       <Header />
       <main id="top">
         <Hero />
-        <Numbers />
-        <Problem />
-        <HowItWorks />
-        <Figures />
-        <SpacedRepetition />
-        <Modes />
-        <Progress />
-        <Community />
+        <Features />
         <Testimonials />
         <Plans />
-        <Faq />
-        <WaitlistCta />
+        <DownloadCta />
       </main>
       <Footer />
     </>

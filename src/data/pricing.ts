@@ -6,7 +6,7 @@
  *
  * ATENÇÃO — o preço do Pro ainda não foi definido (LANDING_BRIEF.md §5).
  * `precoMensal: null` faz o card exibir "Em breve" em vez de um valor.
- * Quando o preço existir, troque `null` pelo número e o texto do card se ajusta.
+ * Troque `null` pelo número assim que o preço existir; o card se ajusta sozinho.
  */
 
 export const LIMITE_FREE = 300;
@@ -37,22 +37,22 @@ export const PLANO_FREE: Plano = {
     "Os 4 modos de prática e a repetição espaçada",
     "Comunidade, conquistas e sincronização entre aparelhos",
   ],
-  ctaRotulo: "Quero ser avisado",
-  ctaHref: "#lista-de-espera",
+  ctaRotulo: "Baixar grátis",
+  ctaHref: "#baixar",
 };
 
 export const PLANO_PRO: Plano = {
   nome: "Pro",
   precoMensal: null,
   descricao:
-    "Acima de 300 gerações por mês entra o Pro, pensado para quem processa material novo toda semana. O preço ainda não foi definido — quem está na lista de espera fica sabendo primeiro.",
+    "Acima de 300 gerações por mês entra o Pro, pensado para quem processa material novo toda semana. Baixe o app e comece pelo Free — o Pro aparece dentro dele quando você precisar.",
   itens: [
     "Tudo do Free, com folga de sobra nas gerações por IA",
     "Pensado para semestre inteiro de material em vez de uma aula",
-    "Quem estiver na lista de espera fica sabendo antes",
+    "Você começa no Free e só muda de plano se o limite apertar",
   ],
-  ctaRotulo: "Entrar na lista",
-  ctaHref: "#lista-de-espera",
+  ctaRotulo: "Baixar o app",
+  ctaHref: "#baixar",
 };
 
 export function planoParaUso(geracoesPorMes: number): Plano {

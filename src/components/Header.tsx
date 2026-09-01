@@ -4,13 +4,9 @@ import { BlinkMark } from "@/components/BlinkMark";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 const NAV = [
-  { href: "#como-funciona", rotulo: "Como funciona" },
-  { href: "#modos", rotulo: "Modos" },
-  { href: "#progresso", rotulo: "Progresso" },
-  { href: "#comunidade", rotulo: "Comunidade" },
+  { href: "#recursos", rotulo: "Recursos" },
   { href: "#depoimentos", rotulo: "Depoimentos" },
   { href: "#planos", rotulo: "Planos" },
-  { href: "#faq", rotulo: "FAQ" },
 ];
 
 /** `enxuto` é o cabeçalho das páginas legais: sem menu, com volta para a home. */
@@ -42,8 +38,8 @@ export function Header({ enxuto = false }: { enxuto?: boolean }) {
               Voltar ao site
             </Link>
           ) : (
-            <a className="btn btn--solid" href="#lista-de-espera">
-              Entrar na lista
+            <a className="btn btn--solid" href="#baixar">
+              Baixar o app
               <ArrowRight className="arrow" size={16} strokeWidth={2.5} />
             </a>
           )}
