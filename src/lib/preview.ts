@@ -1,18 +1,20 @@
 /**
  * A vitrine pública de um deck ou de um autor compartilhado por link.
  *
- * Os dados NÃO vêm direto do banco. As regras do Supabase liberam a leitura da
- * comunidade só para quem está logado — e abrir isso para o público seria
- * publicar o catálogo inteiro, com todos os cards, para qualquer um. Quem
- * atende aqui é a Edge Function `share-preview`, que lê com a chave de serviço
- * do lado do servidor e devolve só o que pode aparecer na web.
+ * Os dados NÃO saem das tabelas. As policies da comunidade liberam leitura só
+ * para quem está logado, e abrir uma policy para `anon` publicaria o catálogo
+ * inteiro — daria para paginar a tabela e raspar todos os cards. Quem atende
+ * aqui são duas funções do Postgres (`share_preview_deck` e
+ * `share_preview_author`), que rodam com privilégio de dono mas devolvem um
+ * registro por chamada, com as colunas numa lista fechada.
  *
- * Por isso este arquivo não tem chave nenhuma: o site é público e não guarda
- * segredo.
+ * A chave abaixo é a PUBLICÁVEL — ela já viaja dentro do bundle do app e é
+ * feita para ser exposta. Quem protege os dados são as policies e o recorte
+ * das funções, nunca o sigilo dela.
  */
 
 const SUPABASE_URL = "https://ekgznmmkccqitbibtgja.supabase.co";
-const ENDPOINT = `${SUPABASE_URL}/functions/v1/share-preview`;
+const SUPABASE_ANON_KEY = "sb_publishable_Hu3A963n1IUgziuMcxGp5Q_FecT39TO";
 
 export interface DeckPublico {
   id: string;
@@ -56,10 +58,25 @@ export async function buscarPreview(
   tipo: "deck" | "autor",
   id: string,
 ): Promise<Preview | null> {
+  const funcao = tipo === "deck" ? "share_preview_deck" : "share_preview_author";
+  const argumento = tipo === "deck" ? { p_deck: id } : { p_author: id };
+
   try {
-    const resposta = await fetch(`${ENDPOINT}?${tipo}=${encodeURIComponent(id)}`);
+    const resposta = await fetch(`${SUPABASE_URL}/rest/v1/rpc/${funcao}`, {
+      method: "POST",
+      headers: {
+        apikey: SUPABASE_ANON_KEY,
+        Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(argumento),
+    });
     if (!resposta.ok) return null;
-    return (await resposta.json()) as Preview;
+    // A função devolve `null` quando o deck não existe, foi removido pela
+    // moderação ou o id está malformado — os três casos viram a mesma página,
+    // porque quem recebeu o link não ganha nada sabendo qual foi.
+    const dados = await resposta.json();
+    return (dados ?? null) as Preview | null;
   } catch {
     return null;
   }
