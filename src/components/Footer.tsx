@@ -1,13 +1,6 @@
 import { Link } from "react-router-dom";
 import { BlinkMark } from "@/components/BlinkMark";
-import { EMAIL_SUPORTE } from "@/data/site";
-
-const PRODUTO = [
-  { href: "/#recursos", rotulo: "Recursos" },
-  { href: "/#depoimentos", rotulo: "Depoimentos" },
-  { href: "/#planos", rotulo: "Planos" },
-  { href: "/#faq", rotulo: "FAQ" },
-];
+import { EMAIL_SUPORTE, URL_APP_STORE, URL_GOOGLE_PLAY } from "@/data/site";
 
 export function Footer() {
   return (
@@ -21,20 +14,31 @@ export function Footer() {
               </span>
               <span className="brand__word">Blink</span>
             </Link>
-            <p>
-              Flashcards com repetição espaçada, feitos a partir do seu próprio material.
-              Disponível para iOS e Android.
-            </p>
+            <p>Flashcards com IA e repetição espaçada, para iPhone e Android.</p>
           </div>
 
           <div className="footer__col">
-            <h4>Produto</h4>
+            <h4>Baixar</h4>
             <ul>
-              {PRODUTO.map((item) => (
-                <li key={item.href}>
-                  <a href={item.href}>{item.rotulo}</a>
-                </li>
-              ))}
+              <li>
+                <a href={URL_APP_STORE} target="_blank" rel="noopener noreferrer">
+                  App Store
+                </a>
+              </li>
+              <li>
+                <a href={URL_GOOGLE_PLAY} target="_blank" rel="noopener noreferrer">
+                  Google Play
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div className="footer__col footer__col--wide">
+            <h4>Contato</h4>
+            <ul>
+              <li>
+                <a href={`mailto:${EMAIL_SUPORTE}`}>{EMAIL_SUPORTE}</a>
+              </li>
             </ul>
           </div>
 
@@ -42,25 +46,10 @@ export function Footer() {
             <h4>Legal</h4>
             <ul>
               <li>
-                <Link to="/privacidade">Política de Privacidade</Link>
-              </li>
-              <li>
                 <Link to="/termos">Termos de Uso</Link>
               </li>
-            </ul>
-          </div>
-
-          <div className="footer__col">
-            <h4>Suporte</h4>
-            <ul>
               <li>
-                <a href={`mailto:${EMAIL_SUPORTE}`}>{EMAIL_SUPORTE}</a>
-              </li>
-              <li>
-                <a href="/#faq">Perguntas frequentes</a>
-              </li>
-              <li>
-                <a href="/#baixar">Baixar o app</a>
+                <Link to="/privacidade">Política de Privacidade</Link>
               </li>
             </ul>
           </div>
@@ -68,7 +57,7 @@ export function Footer() {
 
         <div className="footer__bottom">
           <span>© {new Date().getFullYear()} Blink. Todos os direitos reservados.</span>
-          <span>Feito no Brasil · versão 1.0.0</span>
+          <span>Feito no Brasil</span>
         </div>
       </div>
     </footer>

@@ -1,60 +1,63 @@
+import { EMAIL_SUPORTE } from "@/data/site";
+
 /**
- * Faixas de uso do calculador de plano.
- *
- * O eixo é "gerações por IA por mês" porque é o único limite que o Blink
- * realmente aplica hoje (verificado no servidor, nunca no aparelho).
- *
- * ATENÇÃO — o preço do Pro ainda não foi definido (LANDING_BRIEF.md §5).
- * `precoMensal: null` faz o card exibir "Em breve" em vez de um valor.
- * Troque `null` pelo número assim que o preço existir; o card se ajusta sozinho.
+ * Planos e preços do Blink. Os valores são os reais — mudar aqui muda a
+ * página inteira, inclusive as contas do plano anual.
  */
 
-export const LIMITE_FREE = 300;
+export const PRECO_PLUS_MENSAL = 29.9;
+export const PRECO_PLUS_ANUAL = 199.9;
 
-/** Posições do slider, em gerações por mês. */
-export const FAIXAS_DE_USO = [
-  50, 100, 150, 200, 250, 300, 400, 500, 750, 1000, 1500, 2000, 3000,
+/** O anual dividido em 12 e a economia sobre 12 meses do mensal. */
+export const PLUS_ANUAL_POR_MES = PRECO_PLUS_ANUAL / 12;
+export const DOZE_MESES_DO_MENSAL = PRECO_PLUS_MENSAL * 12;
+export const ECONOMIA_ANUAL_PCT = Math.round(
+  (1 - PRECO_PLUS_ANUAL / DOZE_MESES_DO_MENSAL) * 100,
+);
+
+const formatador = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" });
+export const reais = (valor: number) => formatador.format(valor);
+
+/**
+ * A compra do Plus ainda não abriu. Enquanto `false`, o botão do Plus leva à
+ * lista de espera (um e-mail para o suporte). Quando a compra abrir, troque
+ * para `true`: o botão vira "Assinar o Plus" e aponta para o download, já que
+ * a assinatura é feita dentro do app.
+ */
+export const PLUS_A_VENDA = false;
+
+export const CTA_PLUS = PLUS_A_VENDA
+  ? { rotulo: "Assinar o Plus", href: "#baixar" }
+  : {
+      rotulo: "Entrar na lista de espera",
+      href: `mailto:${EMAIL_SUPORTE}?subject=${encodeURIComponent(
+        "Lista de espera do Blink Plus",
+      )}&body=${encodeURIComponent("Quero receber um aviso quando o Blink Plus abrir.")}`,
+    };
+
+export const ITENS_GRATIS = [
+  "Estudo completo com repetição espaçada, flashcards e quiz",
+  "Criar e editar os próprios cards, com imagens",
+  "Aba Revisar para refazer as questões",
+  "Explorar e publicar na comunidade",
 ];
 
-export interface Plano {
-  nome: string;
-  /** `null` = ainda sem preço público. */
-  precoMensal: number | null;
-  descricao: string;
-  itens: string[];
-  ctaRotulo: string;
-  ctaHref: string;
-}
+/** O que o grátis não tem — mostrado como item à parte, sem o check. */
+export const RESSALVA_GRATIS = "Sem recursos de IA, com anúncios do próprio Blink entre os cards";
 
-export const PLANO_FREE: Plano = {
-  nome: "Free",
-  precoMensal: 0,
-  descricao:
-    "Até 300 gerações por IA por mês — o bastante para transformar o material de um semestre inteiro em decks. Criar cards por conta própria é ilimitado.",
-  itens: [
-    "300 gerações por IA a cada mês",
-    "Decks e cards ilimitados criados por você",
-    "Os 4 modos de prática e a repetição espaçada",
-    "Comunidade, conquistas e sincronização entre aparelhos",
-  ],
-  ctaRotulo: "Baixar grátis",
-  ctaHref: "#baixar",
-};
+export const ITENS_PLUS = [
+  "Decks por IA a partir de arquivos: PDF, PPTX, DOCX e fotos",
+  "Decks por IA a partir de um assunto digitado",
+  "Explicação da IA em cada questão errada",
+  "Chat com a IA sobre a questão",
+  "Baixar decks da comunidade",
+  "Sem anúncios",
+];
 
-export const PLANO_PRO: Plano = {
-  nome: "Pro",
-  precoMensal: null,
-  descricao:
-    "Acima de 300 gerações por mês entra o Pro, pensado para quem processa material novo toda semana. Baixe o app e comece pelo Free — o Pro aparece dentro dele quando você precisar.",
-  itens: [
-    "Tudo do Free, com folga de sobra nas gerações por IA",
-    "Pensado para semestre inteiro de material em vez de uma aula",
-    "Você começa no Free e só muda de plano se o limite apertar",
-  ],
-  ctaRotulo: "Baixar o app",
-  ctaHref: "#baixar",
-};
-
-export function planoParaUso(geracoesPorMes: number): Plano {
-  return geracoesPorMes <= LIMITE_FREE ? PLANO_FREE : PLANO_PRO;
-}
+/** Limites do Plus, aplicados no servidor. Nunca chamar o Plus de "ilimitado". */
+export const LIMITES_PLUS = [
+  { rotulo: "Decks a partir de arquivo", dia: 3, mes: 25 },
+  { rotulo: "Decks a partir de um assunto", dia: 10, mes: 80 },
+  { rotulo: "Explicações da IA", dia: 20, mes: 200 },
+  { rotulo: "Conversas com a IA", dia: 10, mes: 60 },
+];

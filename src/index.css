@@ -30,11 +30,11 @@
   --color-muted: var(--surface);
   --color-muted-foreground: var(--text-2);
 
-  --color-accent: var(--gold);
-  --color-accent-foreground: var(--on-invert);
+  --color-accent: var(--surface);
+  --color-accent-foreground: var(--text);
 
   --color-destructive: var(--error);
-  --color-destructive-foreground: var(--on-invert);
+  --color-destructive-foreground: var(--text);
 
   --color-border: var(--line-soft);
   --color-input: var(--line);
@@ -43,6 +43,6 @@
   --font-sans: var(--font-body);
   --font-display: var(--font-display);
 
-  /* O sistema tem um raio só: 26px em tudo que é card, tag, input e botão. */
+  /* O sistema tem um raio só: 24px em tudo que é card, tag, input e botão. */
   --radius-3xl: var(--radius);
 }

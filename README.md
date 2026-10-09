@@ -1,8 +1,8 @@
 # Blink — Landing Page
 
-Site de pré-lançamento do **Blink**, app de flashcards com repetição espaçada que
-transforma o material do próprio usuário (PDF, PPTX, DOCX, imagem ou tópico digitado)
-em decks prontos.
+Site do **Blink**, app de estudo com flashcards, quiz e repetição espaçada. A IA
+transforma o material do estudante (PDF, PPTX, DOCX, fotos ou um assunto digitado) em
+cards prontos e explica cada erro. Página direta: o que o app faz, o preço e o download.
 
 **Vite · React 18 · TypeScript · Tailwind CSS v4 · shadcn (estrutura) · React Router**
 
@@ -35,14 +35,15 @@ src/
   styles/blink.css            Sistema visual (tokens, componentes, responsivo)
   components/
     ui/                       Componentes shadcn / 21st.dev
-    Header.tsx  Footer.tsx  ThemeToggle.tsx  BlinkMark.tsx
-  sections/                   Uma seção da landing por arquivo
-  pages/                      Home, Política de Privacidade, Termos
+    Header.tsx  Footer.tsx  StoreBadges.tsx  ThemeToggle.tsx  BlinkMark.tsx
+  sections/                   Uma seção da landing por arquivo, na ordem da página:
+                              Hero, HowItWorks, Features, Plans, Faq, DownloadCta
+  pages/                      Home, Privacidade, Termos, deck e autor compartilhados
   hooks/                      useTheme, useScrollReveal
-  data/                       testimonials.ts, site.ts
+  data/                       pricing.ts (preços, itens, limites), faq.tsx, site.ts
   lib/utils.ts                cn()
 DESIGN.md                     Referência de linguagem visual (extraída do Foodnoms)
-LANDING_BRIEF.md              Fonte de verdade do conteúdo
+LANDING_BRIEF.md              Brief original (preços, planos e recursos já mudaram — vale o site)
 ```
 
 ## Adicionar componentes do shadcn / 21st.dev
@@ -66,30 +67,28 @@ Já integrados em `src/components/ui/`:
 
 | Componente | Onde é usado | Origem |
 | --- | --- | --- |
-| `testimonials-columns-1.tsx` | seção Depoimentos | 21st.dev |
 | `interactive-accordion.tsx` | seção FAQ | 21st.dev |
-| `pricing-slider-loops.tsx` | seção Planos | 21st.dev |
+| `dot-pattern.tsx` | textura do herói | Magic UI |
+| `phone-carousel.tsx` | carrossel de telas do herói | reescrito no desenho do "Phone Mockups 1" (solaceui, 21st.dev) |
+| `bento.tsx` | seção Recursos (o grid e os cantos ficam em `.bento`, no `blink.css`) | `BentoCard` do "FUI Bento Grid Dark" (21st.dev), adaptado para `motion/react` |
 
 ## Sistema visual
 
-A **estrutura** vem do `DESIGN.md`: canvas claro, mockups de celular como herói,
-headline em duas tonalidades, raio de 26px em tudo, superfícies planas, ritmo
-vertical de 96px, coluna única de 1200px.
+**Preto e branco, como o app**: paleta monocromática, com tema claro e escuro (o
+botão no header alterna; sem escolha salva, segue o sistema). O destaque é de tom —
+o resto do título em secundário e o resultado em forte (`.tt` + `<strong>`) —,
+nunca de cor. Muito espaço em branco, uma ideia por seção, e o CSS é escrito celular
+primeiro (a regra solta vale para o celular; as media queries só acrescentam).
 
-A **paleta** vem do `LANDING_BRIEF.md` §8, porque o app é monocromático de propósito —
-o cromatismo pertence às capas dos decks, não ao chrome. Onde o Foodnoms usa laranja
-e verde, aqui o contraste é de tom: texto forte contra texto secundário.
+| Token | Claro | Escuro | Uso |
+| --- | --- | --- | --- |
+| `--bg` | `#e2e2df` | `#000000` | Fundo da página |
+| `--card` | `#f6f6f4` | `#121212` | Cards |
+| `--text` | `#111111` | `#c9c9c9` | Texto principal |
+| `--text-2` | `#66666b` | `#7c7c84` | Texto secundário |
+| `--invert` | `#111111` | `#c9c9c9` | Botões, números dos passos, "Melhor escolha" |
 
-| Token | Claro | Escuro |
-| --- | --- | --- |
-| Fundo | `#e2e2df` | `#000000` |
-| Texto | `#111111` | `#c9c9c9` |
-| Secundário | `#78787d` | `#71717a` |
-| Dourado (só patente/conquista) | `#a16207` | `#e3b341` |
-| Erro | `#d92d20` | `#f4212e` |
-
-Tipografia: **Plus Jakarta Sans** (títulos) + **Inter** (texto), via Google Fonts.
-Efeito *liquid glass* restrito ao header e ao bloco final de CTA, como no app.
+Tipografia: **Manrope** (400–800), via Google Fonts, em títulos e texto.
 
 Os tokens vivem em `src/styles/blink.css`; **trocar a paleta é editar o bloco `:root`
 de lá**. O `src/index.css` só faz a ponte: mapeia os nomes que o shadcn espera
@@ -116,14 +115,20 @@ segue o recorte, e não `box-shadow`).
 
 | Arquivo | Tela | Onde aparece |
 | --- | --- | --- |
-| `decks.webp` | Decks | hero, à esquerda |
-| `inicio.webp` | Início | hero, ao centro |
-| `progresso.webp` | Progresso | hero, à direita |
-| `comunidade.webp` | Comunidade | seção Comunidade |
+| `decks.webp` | Decks | carrossel do herói e bento "Decks gerados por IA" |
+| `inicio.webp` | Início | carrossel do herói (abre nela) |
+| `chat.webp` | Conversa sobre a questão | carrossel do herói e bento "Chat sobre a questão" |
+| `questao.webp` | Questão com alternativas | carrossel do herói e bento "Repetição espaçada" |
+| `revisar.webp` | Revisar | carrossel do herói e bento "Aba Revisar" |
+| `comunidade.webp` | Comunidade | carrossel do herói e bento "Comunidade" |
+| `progresso.webp` | Progresso | carrossel do herói e bento "Hábito e progresso" |
 
-Geradas a partir dos PNGs de 1419×2796 com recorte da área pintada e reamostragem
-para 700px de largura (~2,2× do tamanho de exibição). Somam 252 KB.
-Para trocar uma tela, basta substituir o arquivo mantendo a proporção 700×1422.
+O carrossel do herói passa por todas as telas; a lista e a ordem ficam em
+`src/sections/Hero.tsx`, e o texto alternativo de cada tela em `src/data/telas.ts`.
+
+Geradas a partir dos PNGs de 1451×2828 (mockups de iPhone 15) com recorte da área
+pintada e reamostragem para 700×1398. Para trocar uma tela, basta substituir o arquivo
+mantendo essa proporção.
 
 ## Pendências antes de publicar
 
@@ -134,20 +139,18 @@ Para trocar uma tela, basta substituir o arquivo mantendo a proporção 700×142
    são exigidas pelo App Store Connect e pelo Play Console.
 2. **Definir o domínio.** O bundle ID definitivo do app deriva dele em reverse-DNS
    e é permanente após a primeira publicação nas lojas.
-3. **Lista de espera.** Hoje o formulário abre o cliente de e-mail do visitante
-   (`mailto:`). Trocar pelo provedor escolhido em `src/sections/WaitlistCta.tsx`.
-4. **Preço do Pro.** Definir e preencher `precoMensal` em `src/data/pricing.ts`
-   (hoje `null`, que faz o card mostrar "Em breve"). Ajustar também a seção 8 dos
-   Termos. As faixas do slider — `FAIXAS_DE_USO` — estão no mesmo arquivo.
-5. **Links das lojas.** Os badges estão com selo "em breve" e sem `href`.
-   Trocar os `<span className="store-badge">` por `<a>` quando os links saírem.
-6. **Ícones do app.** Copiar `blink_favicon.png` e o ícone 1024 para
-   `public/assets/brand/` do repositório do app; hoje há um favicon SVG feito aqui.
-7. **Depoimentos são de exemplo.** `src/data/testimonials.ts` traz textos fictícios,
-   sinalizados na própria página pelo parágrafo `.placeholder-note`. O brief §4 proíbe
-   inventar prova social: ou troque por depoimentos reais e autorizados (removendo o
-   aviso), ou apague a seção e o item do menu em `src/components/Header.tsx`.
-8. **Open Graph.** Falta `og:image` e `og:url` — dependem do domínio e de uma
+3. **Lista de espera do Plus.** Enquanto a compra não abre, o botão "Entrar na lista
+   de espera" abre o cliente de e-mail do visitante (`mailto:` para o suporte). Quando
+   a compra abrir, trocar `PLUS_A_VENDA` para `true` em `src/data/pricing.ts`: o botão
+   vira "Assinar o Plus" e aponta para o download.
+4. **Preços.** Valores, itens e limites do Plus ficam todos em `src/data/pricing.ts`
+   (o equivalente mensal e a economia do anual são calculados). Se mudarem, ajustar
+   também a seção 8 dos Termos.
+5. **Links das lojas.** `URL_APP_STORE` em `src/data/site.ts` ainda é provisório.
+6. **Ícones do app.** A logo (cérebro) está em `public/assets/brand/`, gerada a partir
+   do ícone 1024 do app: `blink_logo.png` (header/footer), `blink_favicon.png` e
+   `apple-touch-icon.png`. Se o ícone do app mudar, regere os três a partir dele.
+7. **Open Graph.** Falta `og:image` e `og:url` — dependem do domínio e de uma
    imagem de compartilhamento.
 
 ## Deploy

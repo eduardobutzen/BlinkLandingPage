@@ -4,10 +4,10 @@ import { BlinkMark } from "@/components/BlinkMark";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 const NAV = [
+  { href: "#como-funciona", rotulo: "Como funciona" },
   { href: "#recursos", rotulo: "Recursos" },
-  { href: "#depoimentos", rotulo: "Depoimentos" },
-  { href: "#planos", rotulo: "Planos" },
-  { href: "#faq", rotulo: "FAQ" },
+  { href: "#planos", rotulo: "Preços" },
+  { href: "#faq", rotulo: "Perguntas" },
 ];
 
 /** `enxuto` é o cabeçalho das páginas legais: sem menu, com volta para a home. */
@@ -35,11 +35,11 @@ export function Header({ enxuto = false }: { enxuto?: boolean }) {
         <div className="header__actions">
           <ThemeToggle />
           {enxuto ? (
-            <Link className="btn btn--ghost" to="/">
+            <Link className="btn btn--ghost btn--sm" to="/">
               Voltar ao site
             </Link>
           ) : (
-            <a className="btn btn--solid" href="#baixar">
+            <a className="btn btn--solid btn--sm" href="#baixar">
               Baixar o app
               <ArrowRight className="arrow" size={16} strokeWidth={2.5} />
             </a>

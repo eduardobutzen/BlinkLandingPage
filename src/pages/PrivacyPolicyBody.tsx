@@ -63,7 +63,7 @@ export function PrivacyPolicyBody() {
           <li>Registros de acesso e de erro necessários à operação e à segurança do serviço.</li>
           <li>Contagem de gerações por IA no período, para aplicar o limite do seu plano.</li>
         </ul>
-        <p>O Blink <b>não</b> exibe anúncios e <b>não</b> vende os seus dados.</p>
+        <p>O plano grátis exibe anúncios do próprio Blink entre os cards. O Blink <b>não</b> vende os seus dados.</p>
 
         <h2 id="ia">3. Processamento do seu material por inteligência artificial</h2>
         <p>Esta é a parte mais importante desta política, então ela vem sem rodeios:

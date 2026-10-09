@@ -55,7 +55,7 @@ export function UniqueAccordion({
                   {/* Número, com o círculo que cresce ao abrir */}
                   <div className="relative flex items-center justify-center w-10 h-10 shrink-0">
                     <motion.div
-                      className="absolute inset-0 rounded-full bg-foreground"
+                      className="absolute inset-0 rounded-full bg-primary"
                       initial={false}
                       animate={{
                         scale: isActive ? 1 : isHovered ? 0.85 : 0,
@@ -114,7 +114,7 @@ export function UniqueAccordion({
                 {/* Régua base + a que se preenche conforme o estado */}
                 <div className="absolute bottom-0 left-0 right-0 h-px bg-border" />
                 <motion.div
-                  className="absolute bottom-0 left-0 right-0 h-px bg-foreground origin-left"
+                  className="absolute bottom-0 left-0 right-0 h-px bg-primary origin-left"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: isActive ? 1 : isHovered ? 0.3 : 0 }}
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
