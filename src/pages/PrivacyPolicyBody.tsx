@@ -6,7 +6,7 @@ export function PrivacyPolicyBody() {
         <p className="eyebrow">Legal</p>
         <h1>Política de Privacidade</h1>
         <p className="doc__meta">Aplica-se ao aplicativo Blink (iOS e Android) e a este site.<br />
-          Última atualização: 20 de agosto de 2026 · Vigência a partir de [DEFINIR data de publicação]</p>
+          Última atualização: 12 de outubro de 2026</p>
 
         <div className="doc__toc">
           <h4>Nesta página</h4>
@@ -30,7 +30,7 @@ export function PrivacyPolicyBody() {
 
         <h2 id="quem">1. Quem é responsável pelos seus dados</h2>
         <p>O Blink é um aplicativo de flashcards com repetição espaçada operado por
-          [DEFINIR titular — nome/razão social, CNPJ ou CPF, endereço], doravante “nós”.
+          Gabriel Maica Warpechowski, pessoa física residente em Santo Ângelo (RS), doravante “nós”.
           Para qualquer assunto relacionado a esta política, o canal é
           <a href="mailto:blinkflashcards@gmail.com">blinkflashcards@gmail.com</a>.</p>
         <p>Tratamos dados pessoais na qualidade de <b>controlador</b>, nos termos da Lei nº 13.709/2018 (LGPD).</p>
@@ -62,6 +62,13 @@ export function PrivacyPolicyBody() {
         <ul>
           <li>Registros de acesso e de erro necessários à operação e à segurança do serviço.</li>
           <li>Contagem de gerações por IA no período, para aplicar o limite do seu plano.</li>
+          <li>Registro de uso da IA em cada pedido (quanto texto foi enviado e devolvido), para controlar custos.</li>
+        </ul>
+
+        <h3>2.5 Dados de assinatura</h3>
+        <ul>
+          <li>Se você assinar o Blink Plus: plano contratado, loja (App Store ou Google Play), identificador da transação, valor pago, moeda, país e as datas de compra, renovação, cancelamento ou reembolso.</li>
+          <li>Não recebemos nem armazenamos os dados do seu cartão — o pagamento acontece inteiramente na loja.</li>
         </ul>
         <p>O plano grátis exibe anúncios do próprio Blink entre os cards. O Blink <b>não</b> vende os seus dados.</p>
 
@@ -70,11 +77,15 @@ export function PrivacyPolicyBody() {
           <b>quando você pede ao Blink para gerar cards, o conteúdo enviado é transmitido a provedores
           de inteligência artificial de terceiros para processamento.</b></p>
         <ul>
-          <li><b>Anthropic</b> — modelos Claude, usados para ler documentos, gerar os cards a partir de tópicos ou textos e corrigir as respostas do modo Escrever.</li>
-          <li><b>Google</b> — modelos Gemini, acionados como alternativa quando o provedor principal está indisponível.</li>
+          <li><b>Google (API Gemini)</b> — modelos Gemini, usados para ler o seu material, gerar os cards a partir de arquivos, tópicos ou textos, explicar as questões que você errou e responder às perguntas que você faz no chat sobre uma questão.</li>
+          <li><b>Google Cloud</b> — servidor que extrai o texto e as figuras dos arquivos que você envia (PDF, PowerPoint, Word e imagens) antes da geração.</li>
         </ul>
+        <p>Usamos a modalidade paga da API Gemini. Nela, conforme os termos do Google, o conteúdo
+          enviado e as respostas <b>não são usados para melhorar os produtos do Google</b> nem para
+          treinar os seus modelos; o Google mantém registros por tempo limitado apenas para detectar e
+          prevenir abuso.</p>
         <p>O envio acontece a partir dos nossos servidores, não do seu aparelho, e apenas quando você
-          solicita uma geração. As chaves de acesso a esses provedores ficam guardadas como segredos no
+          usa um recurso de IA. As chaves de acesso a esses provedores ficam guardadas como segredos no
           servidor e nunca são embarcadas no aplicativo.</p>
         <p>O tratamento realizado por esses provedores é regido pelos termos e políticas deles.
           Não temos controle sobre as práticas internas de cada fornecedor além do que os respectivos
@@ -89,6 +100,7 @@ export function PrivacyPolicyBody() {
           <li><b>Calcular progresso</b>: meta diária, sequência, XP, níveis e conquistas.</li>
           <li><b>Enviar lembretes locais</b> com a contagem real de cards devidos, se você ativar.</li>
           <li><b>Aplicar os limites do seu plano</b>, verificados no servidor.</li>
+          <li><b>Processar a sua assinatura</b>: liberar o Blink Plus, renová-lo, encerrá-lo e registrar reembolsos.</li>
           <li><b>Operar a Comunidade</b>, incluindo moderação de denúncias.</li>
           <li><b>Garantir segurança</b> e investigar abuso ou uso indevido.</li>
         </ul>
@@ -99,8 +111,9 @@ export function PrivacyPolicyBody() {
         <h2 id="compartilhamento">5. Com quem compartilhamos</h2>
         <ul>
           <li><b>Supabase</b> — infraestrutura de autenticação, banco de dados, armazenamento de arquivos e funções de servidor.</li>
-          <li><b>Anthropic</b> e <b>Google</b> — processamento de IA, conforme a seção 3.</li>
+          <li><b>Google</b> — processamento de IA e extração de arquivos, conforme a seção 3.</li>
           <li><b>Apple</b> e <b>Google</b> — quando houver assinatura, o processamento do pagamento ocorre nas lojas; não recebemos os dados do seu cartão.</li>
+          <li><b>RevenueCat</b> — gerencia as assinaturas do Blink Plus: recebe da loja a confirmação de cada compra, renovação ou reembolso, junto de um identificador da sua conta no Blink, para liberar ou encerrar o plano. Não recebe os dados do seu cartão.</li>
           <li><b>Autoridades</b> — apenas mediante requisição legal válida.</li>
         </ul>
         <p>Não compartilhamos dados pessoais com anunciantes nem com corretores de dados.</p>
@@ -137,7 +150,7 @@ export function PrivacyPolicyBody() {
         <ul>
           <li>Cópias de decks que você publicou e que outras pessoas já baixaram permanecem com elas.</li>
           <li>Registros que precisemos manter por obrigação legal ou para defesa em processo são conservados pelo prazo estritamente necessário.</li>
-          <li>Backups são sobrescritos no ciclo normal de rotação, em até [DEFINIR prazo — conferir com a configuração do provedor].</li>
+          <li>Backups são sobrescritos no ciclo normal de rotação, em até 7 dias.</li>
         </ul>
 
         <h2 id="direitos">10. Seus direitos</h2>

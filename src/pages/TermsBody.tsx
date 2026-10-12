@@ -6,7 +6,7 @@ export function TermsBody() {
         <p className="eyebrow">Legal</p>
         <h1>Termos de Uso</h1>
         <p className="doc__meta">Aplica-se ao aplicativo Blink (iOS e Android) e a este site.<br />
-          Última atualização: 20 de agosto de 2026 · Vigência a partir de [DEFINIR data de publicação]</p>
+          Última atualização: 12 de outubro de 2026</p>
 
         <div className="doc__toc">
           <h4>Nesta página</h4>
@@ -31,12 +31,13 @@ export function TermsBody() {
         <p>Ao criar uma conta ou usar o Blink, você concorda com estes Termos de Uso e com a
           <a href="/privacidade">Política de Privacidade</a>. Se não concordar com algum ponto,
           não use o serviço.</p>
-        <p>O Blink é operado por [DEFINIR titular — nome/razão social, CNPJ ou CPF, endereço].</p>
+        <p>O Blink é operado por Gabriel Maica Warpechowski, pessoa física residente em Santo Ângelo (RS).</p>
 
         <h2 id="servico">2. O que o Blink é</h2>
         <p>O Blink é um aplicativo de flashcards com repetição espaçada que gera cards a partir de
           material fornecido por você — PDF, PowerPoint, Word, imagem, texto colado ou tópico digitado —
-          e agenda as revisões pelo algoritmo SM-2. Inclui quatro modos de prática, acompanhamento de
+          e agenda as revisões pelo algoritmo SM-2. Inclui três modos de prática (flashcards, quiz e os dois
+          intercalados), acompanhamento de
           progresso e uma área de Comunidade para publicar e baixar decks.</p>
         <p>É uma ferramenta de estudo. <b>Não é serviço educacional certificado, consultoria profissional
           nem fonte de informação verificada</b>, e não substitui o seu material original ou a orientação
@@ -73,11 +74,10 @@ export function TermsBody() {
 
         <h2 id="ia">6. Geração por inteligência artificial</h2>
         <p>Ao pedir uma geração, o material enviado é processado por provedores de IA de terceiros
-          (Anthropic e, como alternativa, Google), conforme detalhado na
+          (Google, por meio dos modelos Gemini), conforme detalhado na
           <a href="/privacidade#ia">Política de Privacidade</a>.</p>
         <ul>
-          <li><b>O resultado pode conter erros.</b> Cards gerados por IA podem trazer imprecisões, omissões ou interpretações equivocadas do material. Confira o conteúdo antes de confiar nele — especialmente em contextos de saúde, direito e finanças.</li>
-          <li><b>A correção do modo Escrever avalia sentido</b>, não literalidade, e também está sujeita a erro.</li>
+          <li><b>O resultado pode conter erros.</b> Cards, explicações e respostas do chat gerados por IA podem trazer imprecisões, omissões ou interpretações equivocadas do material. Confira o conteúdo antes de confiar nele — especialmente em contextos de saúde, direito e finanças.</li>
           <li><b>Há limites técnicos por arquivo:</b> 25 MB, 80 páginas ou slides e até 60 figuras aprovadas. Material acima disso é processado até onde couber, com aviso.</li>
           <li><b>Não garantimos disponibilidade contínua</b> da geração por IA: ela depende de serviços de terceiros que podem falhar ou mudar suas condições.</li>
         </ul>
@@ -134,7 +134,7 @@ export function TermsBody() {
           <li><b>Alterações:</b> podemos atualizar estes termos. Mudanças relevantes serão comunicadas no aplicativo antes de entrar em vigor; continuar usando o Blink depois disso significa concordar com a nova versão.</li>
           <li><b>Cessão:</b> você não pode transferir sua conta a terceiros. Podemos ceder estes termos em caso de reorganização societária, mantendo as suas condições.</li>
           <li><b>Independência das cláusulas:</b> se alguma disposição for considerada inválida, as demais continuam valendo.</li>
-          <li><b>Lei aplicável e foro:</b> aplica-se a lei brasileira. Fica eleito o foro da comarca de [DEFINIR comarca], ressalvado o direito do consumidor de demandar no foro do seu domicílio.</li>
+          <li><b>Lei aplicável e foro:</b> aplica-se a lei brasileira. Fica eleito o foro da comarca de Santo Ângelo (RS), ressalvado o direito do consumidor de demandar no foro do seu domicílio.</li>
         </ul>
 
         <h2 id="contato">13. Contato</h2>
