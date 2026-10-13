@@ -35,7 +35,7 @@ export function TermsBody() {
 
         <h2 id="servico">2. O que o Blink é</h2>
         <p>O Blink é um aplicativo de flashcards com repetição espaçada que gera cards a partir de
-          material fornecido por você — PDF, PowerPoint, Word, imagem, texto colado ou tópico digitado —
+          material fornecido por você (PDF, PowerPoint, Word, imagem, texto colado ou tópico digitado)
           e agenda as revisões pelo algoritmo SM-2. Inclui três modos de prática (flashcards, quiz e os dois
           intercalados), acompanhamento de
           progresso e uma área de Comunidade para publicar e baixar decks.</p>
@@ -48,7 +48,7 @@ export function TermsBody() {
           <li>Você precisa de uma conta com e-mail e senha para usar o Blink.</li>
           <li>Idade mínima de 13 anos; entre 13 e 18, com consentimento dos responsáveis.</li>
           <li>Você é responsável por manter a senha em segurança e por tudo que acontecer na sua conta.</li>
-          <li>Informe dados verdadeiros e mantenha o e-mail atualizado — é por ele que fazemos a recuperação de acesso.</li>
+          <li>Informe dados verdadeiros e mantenha o e-mail atualizado, porque é por ele que fazemos a recuperação de acesso.</li>
           <li>Uma conta é pessoal e não deve ser compartilhada.</li>
         </ul>
 
@@ -68,7 +68,7 @@ export function TermsBody() {
           licença técnica necessária para operar o serviço: armazenar, processar, exibir para você e
           sincronizar entre os seus aparelhos.</p>
         <p>Se você publicar um deck na Comunidade, essa licença se estende ao alcance da opção que você
-          escolher no momento da publicação — nada além dela.</p>
+          escolher no momento da publicação, e nada além dela.</p>
         <p>Você pode exportar os seus decks em arquivo e excluir a sua conta a qualquer momento, dentro
           do próprio aplicativo.</p>
 
@@ -77,7 +77,7 @@ export function TermsBody() {
           (Google, por meio dos modelos Gemini), conforme detalhado na
           <a href="/privacidade#ia">Política de Privacidade</a>.</p>
         <ul>
-          <li><b>O resultado pode conter erros.</b> Cards, explicações e respostas do chat gerados por IA podem trazer imprecisões, omissões ou interpretações equivocadas do material. Confira o conteúdo antes de confiar nele — especialmente em contextos de saúde, direito e finanças.</li>
+          <li><b>O resultado pode conter erros.</b> Cards, explicações e respostas do chat gerados por IA podem trazer imprecisões, omissões ou interpretações equivocadas do material. Confira o conteúdo antes de confiar nele, especialmente em contextos de saúde, direito e finanças.</li>
           <li><b>Há limites técnicos por arquivo:</b> 25 MB, 80 páginas ou slides e até 60 figuras aprovadas. Material acima disso é processado até onde couber, com aviso.</li>
           <li><b>Não garantimos disponibilidade contínua</b> da geração por IA: ela depende de serviços de terceiros que podem falhar ou mudar suas condições.</li>
         </ul>
@@ -85,9 +85,9 @@ export function TermsBody() {
         <h2 id="comunidade">7. Comunidade e licenças de deck</h2>
         <p>Ao publicar um deck, você escolhe uma das licenças abaixo, e ela é aplicada pelo serviço:</p>
         <ul>
-          <li><b>Protegido</b> — outras pessoas podem baixar e estudar, mas não exportar em arquivo nem republicar.</li>
-          <li><b>Compartilhável</b> — podem baixar e exportar em arquivo, mas não republicar como conteúdo próprio.</li>
-          <li><b>Aberto</b> — podem exportar e republicar adaptações, sempre com crédito a você.</li>
+          <li><b>Protegido</b>: outras pessoas podem baixar e estudar, mas não exportar em arquivo nem republicar.</li>
+          <li><b>Compartilhável</b>: podem baixar e exportar em arquivo, mas não republicar como conteúdo próprio.</li>
+          <li><b>Aberto</b>: podem exportar e republicar adaptações, sempre com crédito a você.</li>
         </ul>
         <p>A publicação é feita por <i>snapshot</i>: quem baixa fica com uma cópia independente.
           Despublicar não recolhe as cópias já baixadas. Decks adaptados exibem a origem

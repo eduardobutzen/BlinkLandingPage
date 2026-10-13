@@ -39,10 +39,10 @@ export default function DeckCompartilhado() {
         setDeck(r.deck);
         setAmostra(r.amostra);
         setEstado("ok");
-        document.title = `${r.deck.title} — Blink`;
+        document.title = `${r.deck.title} | Blink`;
       } else {
         setEstado("nao-encontrado");
-        document.title = "Deck não encontrado — Blink";
+        document.title = "Deck não encontrado | Blink";
       }
     });
     return () => {
@@ -179,7 +179,7 @@ export default function DeckCompartilhado() {
                 ))}
               </ul>
               <p className="small muted">
-                As respostas ficam no app — é lá que elas viram memória.
+                As respostas ficam no app, que é onde elas viram memória.
               </p>
             </div>
           )}

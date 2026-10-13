@@ -68,7 +68,7 @@ export function PrivacyPolicyBody() {
         <h3>2.5 Dados de assinatura</h3>
         <ul>
           <li>Se você assinar o Blink Plus: plano contratado, loja (App Store ou Google Play), identificador da transação, valor pago, moeda, país e as datas de compra, renovação, cancelamento ou reembolso.</li>
-          <li>Não recebemos nem armazenamos os dados do seu cartão — o pagamento acontece inteiramente na loja.</li>
+          <li>Não recebemos nem armazenamos os dados do seu cartão. O pagamento acontece inteiramente na loja.</li>
         </ul>
         <p>O plano grátis exibe anúncios do próprio Blink entre os cards. O Blink <b>não</b> vende os seus dados.</p>
 
@@ -77,8 +77,8 @@ export function PrivacyPolicyBody() {
           <b>quando você pede ao Blink para gerar cards, o conteúdo enviado é transmitido a provedores
           de inteligência artificial de terceiros para processamento.</b></p>
         <ul>
-          <li><b>Google (API Gemini)</b> — modelos Gemini, usados para ler o seu material, gerar os cards a partir de arquivos, tópicos ou textos, explicar as questões que você errou e responder às perguntas que você faz no chat sobre uma questão.</li>
-          <li><b>Google Cloud</b> — servidor que extrai o texto e as figuras dos arquivos que você envia (PDF, PowerPoint, Word e imagens) antes da geração.</li>
+          <li><b>Google (API Gemini)</b>: modelos Gemini, usados para ler o seu material, gerar os cards a partir de arquivos, tópicos ou textos, explicar as questões que você errou e responder às perguntas que você faz no chat sobre uma questão.</li>
+          <li><b>Google Cloud</b>: servidor que extrai o texto e as figuras dos arquivos que você envia (PDF, PowerPoint, Word e imagens) antes da geração.</li>
         </ul>
         <p>Usamos a modalidade paga da API Gemini. Nela, conforme os termos do Google, o conteúdo
           enviado e as respostas <b>não são usados para melhorar os produtos do Google</b> nem para
@@ -90,7 +90,7 @@ export function PrivacyPolicyBody() {
         <p>O tratamento realizado por esses provedores é regido pelos termos e políticas deles.
           Não temos controle sobre as práticas internas de cada fornecedor além do que os respectivos
           contratos preveem. Se você não quiser que um material específico seja processado dessa forma,
-          não o envie para geração por IA — criar cards manualmente não aciona nenhum provedor externo.</p>
+          não o envie para geração por IA. Criar cards manualmente não aciona nenhum provedor externo.</p>
 
         <h2 id="finalidades">4. Para que usamos cada dado</h2>
         <ul>
@@ -110,11 +110,11 @@ export function PrivacyPolicyBody() {
 
         <h2 id="compartilhamento">5. Com quem compartilhamos</h2>
         <ul>
-          <li><b>Supabase</b> — infraestrutura de autenticação, banco de dados, armazenamento de arquivos e funções de servidor.</li>
-          <li><b>Google</b> — processamento de IA e extração de arquivos, conforme a seção 3.</li>
-          <li><b>Apple</b> e <b>Google</b> — quando houver assinatura, o processamento do pagamento ocorre nas lojas; não recebemos os dados do seu cartão.</li>
-          <li><b>RevenueCat</b> — gerencia as assinaturas do Blink Plus: recebe da loja a confirmação de cada compra, renovação ou reembolso, junto de um identificador da sua conta no Blink, para liberar ou encerrar o plano. Não recebe os dados do seu cartão.</li>
-          <li><b>Autoridades</b> — apenas mediante requisição legal válida.</li>
+          <li><b>Supabase</b>: infraestrutura de autenticação, banco de dados, armazenamento de arquivos e funções de servidor.</li>
+          <li><b>Google</b>: processamento de IA e extração de arquivos, conforme a seção 3.</li>
+          <li><b>Apple</b> e <b>Google</b>: quando houver assinatura, o processamento do pagamento ocorre nas lojas; não recebemos os dados do seu cartão.</li>
+          <li><b>RevenueCat</b>: gerencia as assinaturas do Blink Plus: recebe da loja a confirmação de cada compra, renovação ou reembolso, junto de um identificador da sua conta no Blink, para liberar ou encerrar o plano. Não recebe os dados do seu cartão.</li>
+          <li><b>Autoridades</b>: apenas mediante requisição legal válida.</li>
         </ul>
         <p>Não compartilhamos dados pessoais com anunciantes nem com corretores de dados.</p>
 
@@ -122,7 +122,7 @@ export function PrivacyPolicyBody() {
         <ul>
           <li><b>Row Level Security em todas as tabelas.</b> O isolamento entre contas é aplicado pelo banco de dados: uma conta não consegue ler os dados de outra, mesmo que a interface falhe.</li>
           <li><b>Segredos fora do aplicativo.</b> Nenhuma chave de API viaja no pacote instalado no seu aparelho.</li>
-          <li><b>Armazenamento de imagens por hash do conteúdo</b>, com escrita restrita à pasta da sua própria conta — o que evita duplicatas e acesso cruzado.</li>
+          <li><b>Armazenamento de imagens por hash do conteúdo</b>, com escrita restrita à pasta da sua própria conta, o que evita duplicatas e acesso cruzado.</li>
           <li><b>Tráfego criptografado</b> entre o aplicativo e os nossos servidores.</li>
         </ul>
         <p>Nenhum sistema é imune a incidentes. Se ocorrer um incidente de segurança relevante,
@@ -144,7 +144,7 @@ export function PrivacyPolicyBody() {
 
         <h2 id="retencao">9. Retenção e exclusão da conta</h2>
         <p>Mantemos os seus dados enquanto a sua conta existir. <b>A exclusão da conta está disponível
-          dentro do próprio aplicativo</b> e remove os seus dados de ponta a ponta — decks, cards,
+          dentro do próprio aplicativo</b> e remove os seus dados de ponta a ponta: decks, cards,
           sessões, progresso, conquistas e imagens armazenadas.</p>
         <p>Ressalvas honestas sobre o que a exclusão não alcança:</p>
         <ul>

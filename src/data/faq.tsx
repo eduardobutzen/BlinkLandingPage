@@ -9,7 +9,7 @@ export const perguntasFrequentes: AccordionItem[] = [
     content: (
       <p>
         Não. Estudar é grátis: flashcards, quiz, repetição espaçada, aba Revisar e comunidade. Os
-        recursos de IA — gerar decks, explicar erros e conversar sobre a questão — são do Blink
+        recursos de IA (gerar decks, explicar erros e conversar sobre a questão) são do Blink
         Plus.
       </p>
     ),

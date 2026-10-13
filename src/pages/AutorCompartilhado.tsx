@@ -36,10 +36,10 @@ export default function AutorCompartilhado() {
         setAutor(r.autor);
         setDecks(r.decks);
         setEstado("ok");
-        document.title = `${r.autor.name} — Blink`;
+        document.title = `${r.autor.name} | Blink`;
       } else {
         setEstado("nao-encontrado");
-        document.title = "Autor não encontrado — Blink";
+        document.title = "Autor não encontrado | Blink";
       }
     });
     return () => {

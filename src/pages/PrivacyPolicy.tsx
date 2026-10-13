@@ -5,7 +5,7 @@ import { PrivacyPolicyBody } from "@/pages/PrivacyPolicyBody";
 
 export default function PrivacyPolicy() {
   useEffect(() => {
-    document.title = "Política de Privacidade — Blink";
+    document.title = "Política de Privacidade | Blink";
   }, []);
 
   return (

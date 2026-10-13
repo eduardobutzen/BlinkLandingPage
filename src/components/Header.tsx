@@ -15,7 +15,7 @@ export function Header({ enxuto = false }: { enxuto?: boolean }) {
   return (
     <header className="header">
       <div className="wrap header__inner">
-        <Link className="brand" to="/" aria-label="Blink — início">
+        <Link className="brand" to="/" aria-label="Blink, página inicial">
           <span className="brand__mark">
             <BlinkMark />
           </span>

@@ -5,7 +5,7 @@ import { TermsBody } from "@/pages/TermsBody";
 
 export default function Terms() {
   useEffect(() => {
-    document.title = "Termos de Uso — Blink";
+    document.title = "Termos de Uso | Blink";
   }, []);
 
   return (
