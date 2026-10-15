@@ -21,14 +21,22 @@ export function Footer() {
             <h4>Baixar</h4>
             <ul>
               <li>
-                <a href={URL_APP_STORE} target="_blank" rel="noopener noreferrer">
-                  App Store
-                </a>
+                {URL_APP_STORE ? (
+                  <a href={URL_APP_STORE} target="_blank" rel="noopener noreferrer">
+                    App Store
+                  </a>
+                ) : (
+                  <span className="muted">App Store (em breve)</span>
+                )}
               </li>
               <li>
-                <a href={URL_GOOGLE_PLAY} target="_blank" rel="noopener noreferrer">
-                  Google Play
-                </a>
+                {URL_GOOGLE_PLAY ? (
+                  <a href={URL_GOOGLE_PLAY} target="_blank" rel="noopener noreferrer">
+                    Google Play
+                  </a>
+                ) : (
+                  <span className="muted">Google Play (em breve)</span>
+                )}
               </li>
             </ul>
           </div>
