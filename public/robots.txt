@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://blinkflashcards.com.br/sitemap.xml
