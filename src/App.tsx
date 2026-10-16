@@ -5,6 +5,7 @@ import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import Terms from "@/pages/Terms";
 import DeckCompartilhado from "@/pages/DeckCompartilhado";
 import AutorCompartilhado from "@/pages/AutorCompartilhado";
+import Baixar from "@/pages/Baixar";
 
 /** Trocar de rota deve levar ao topo; âncora na mesma página, não. */
 function RolarAoTrocarDeRota() {
@@ -32,6 +33,10 @@ export default function App() {
         {/* Links compartilhados pelo app. Os caminhos são em português porque
             quem os lê é gente no WhatsApp; quem traduz para a rota interna do
             app é `app/+native-intent.tsx`, lá no repositório do Blink. */}
+        {/* `/baixar` é o que o app compartilha em "Compartilhar app" (INVITE_URL)
+            e o que vai na bio das redes. `/app` é apelido, para quem digitar. */}
+        <Route path="/baixar" element={<Baixar />} />
+        <Route path="/app" element={<Baixar />} />
         <Route path="/deck/:id" element={<DeckCompartilhado />} />
         <Route path="/autor/:id" element={<AutorCompartilhado />} />
         {/* Endereço desconhecido cai na landing em vez de uma tela em branco. */}

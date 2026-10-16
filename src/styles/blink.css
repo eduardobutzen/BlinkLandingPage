@@ -176,6 +176,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   transition: opacity .18s ease, transform .18s ease;
 }
 .store-badge:hover { opacity: .9; transform: translateY(-1px); }
+/* Loja ainda sem link: aparece apagado e não responde ao toque. */
+.store-badge--breve { opacity: .45; cursor: default; }
+.store-badge--breve:hover { opacity: .45; transform: none; }
 .store-badge svg { flex: none; }
 .store-badge span { display: block; }
 .store-badge .s1 { font-size: 11px; line-height: 1.2; opacity: .75; }

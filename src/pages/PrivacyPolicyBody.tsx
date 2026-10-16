@@ -63,6 +63,7 @@ export function PrivacyPolicyBody() {
           <li>Registros de acesso e de erro necessários à operação e à segurança do serviço.</li>
           <li>Contagem de gerações por IA no período, para aplicar o limite do seu plano.</li>
           <li>Registro de uso da IA em cada pedido (quanto texto foi enviado e devolvido), para controlar custos.</li>
+          <li>No site blinkflashcards.com.br, medimos visitas de forma anônima pela Vercel: páginas abertas, país e tipo de aparelho. Não usamos cookie para isso, não criamos perfil e não dá para identificar você a partir desses números.</li>
         </ul>
 
         <h3>2.5 Dados de assinatura</h3>
@@ -114,6 +115,7 @@ export function PrivacyPolicyBody() {
           <li><b>Google</b>: processamento de IA e extração de arquivos, conforme a seção 3.</li>
           <li><b>Apple</b> e <b>Google</b>: quando houver assinatura, o processamento do pagamento ocorre nas lojas; não recebemos os dados do seu cartão.</li>
           <li><b>RevenueCat</b>: gerencia as assinaturas do Blink Plus: recebe da loja a confirmação de cada compra, renovação ou reembolso, junto de um identificador da sua conta no Blink, para liberar ou encerrar o plano. Não recebe os dados do seu cartão.</li>
+          <li><b>Vercel</b>: hospedagem do site e medição anônima de visitas, conforme a seção 2.4.</li>
           <li><b>Autoridades</b>: apenas mediante requisição legal válida.</li>
         </ul>
         <p>Não compartilhamos dados pessoais com anunciantes nem com corretores de dados.</p>
