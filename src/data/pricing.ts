@@ -56,7 +56,7 @@ export const ITENS_PLUS = [
 
 /** Limites do Plus, aplicados no servidor. Nunca chamar o Plus de "ilimitado". */
 export const LIMITES_PLUS = [
-  { rotulo: "Decks a partir de arquivo", dia: 3, mes: 25 },
+  { rotulo: "Decks a partir de arquivo", dia: 3, mes: 20 },
   { rotulo: "Decks a partir de um assunto", dia: 10, mes: 80 },
   { rotulo: "Explicações da IA", dia: 20, mes: 200 },
   { rotulo: "Conversas com a IA", dia: 10, mes: 60 },
