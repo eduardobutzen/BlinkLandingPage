@@ -6,7 +6,6 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 const NAV = [
   { href: "#como-funciona", rotulo: "Como funciona" },
   { href: "#recursos", rotulo: "Recursos" },
-  { href: "#planos", rotulo: "Preços" },
   { href: "#faq", rotulo: "Perguntas" },
 ];
 
