@@ -1,0 +1,14 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["24B688V3MX.br.com.blinkflashcards.app"],
+        "components": [
+          { "/": "/deck/*", "comment": "deck compartilhado" },
+          { "/": "/autor/*", "comment": "perfil de quem publica" },
+          { "/": "/baixar", "comment": "convite: com o app instalado, vai para a Comunidade" }
+        ]
+      }
+    ]
+  }
+}
