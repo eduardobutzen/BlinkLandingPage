@@ -2,7 +2,7 @@
 export function BlinkMark({ size = 32 }: { size?: number }) {
   return (
     <img
-      src="/assets/brand/blink_logo.png"
+      src="/assets/brand/blink_logo.png?v=2"
       width={size}
       height={size}
       alt=""
