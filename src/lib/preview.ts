@@ -58,8 +58,10 @@ export async function buscarPreview(
   tipo: "deck" | "autor",
   id: string,
 ): Promise<Preview | null> {
+  const uuid = expandirId(id);
+  if (uuid == null) return null;
   const funcao = tipo === "deck" ? "share_preview_deck" : "share_preview_author";
-  const argumento = tipo === "deck" ? { p_deck: id } : { p_author: id };
+  const argumento = tipo === "deck" ? { p_deck: uuid } : { p_author: uuid };
 
   try {
     const resposta = await fetch(`${SUPABASE_URL}/rest/v1/rpc/${funcao}`, {
@@ -93,7 +95,34 @@ export async function buscarPreview(
  * precisa ter um plano B: ver `abrirNoApp`.
  */
 export function esquemaDoApp(tipo: "deck" | "autor", id: string): string {
-  return tipo === "deck" ? `blink://community/${id}` : `blink://community/author/${id}`;
+  // Os mesmos caminhos do link público. O antigo `blink://community/<id>` o
+  // app recebia e não sabia ler: abria e ficava parado.
+  return `blink://${tipo}/${id}`;
+}
+
+// ── Id curto ─────────────────────────────────────────────────────────────────
+
+/**
+ * Os links novos trazem o id em 22 caracteres (base64url do UUID), porque o
+ * UUID cru tem o formato da chave Pix aleatória e o WhatsApp no iPhone o
+ * oferecia como "copiar chave Pix" em vez de abrir o link. Os links antigos,
+ * com o UUID, continuam valendo.
+ *
+ * Cópia de `Blink/utils/shortId.ts`: o alfabeto tem que ser o mesmo dos dois
+ * lados.
+ */
+const ALFABETO = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
+const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const CURTO = /^[A-Za-z0-9_-]{22}$/;
+
+export function expandirId(texto: string): string | null {
+  if (UUID.test(texto)) return texto.toLowerCase();
+  if (!CURTO.test(texto)) return null;
+  let bits = "";
+  for (const c of texto) bits += ALFABETO.indexOf(c).toString(2).padStart(6, "0");
+  let hex = "";
+  for (let i = 0; i < 128; i += 4) hex += parseInt(bits.slice(i, i + 4), 2).toString(16);
+  return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
 }
 
 /**
