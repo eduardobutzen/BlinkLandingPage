@@ -1,48 +1,34 @@
 @import "tailwindcss";
-/* Precisa entrar numa layer: CSS sem layer vence QUALQUER @layer, e o reset
-   daqui (`p { margin: 0 }` e afins) passaria por cima dos utilitários do
-   Tailwind. Em `components` ele ainda vence o preflight, mas perde para as
-   utilities — que é a precedência esperada. */
-@import "./styles/blink.css" layer(components);
+/* As folhas do Blink entram em layers: CSS sem layer vence QUALQUER @layer e
+   passaria por cima dos utilitários do Tailwind. Tokens e base vão depois do
+   preflight (layer base); os componentes ficam abaixo das utilities. */
+@import "./styles/tokens.css" layer(base);
+@import "./styles/base.css" layer(base);
+@import "./styles/site.css" layer(components);
 
 /* O tema é carimbado em <html data-theme="dark"> pelo script do index.html,
-   então a variante `dark:` do Tailwind precisa olhar para esse atributo. */
+   então a variante `dark:` do Tailwind olha para esse atributo. */
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
-/* Ponte entre os nomes que o shadcn/21st.dev usam e os tokens do Blink,
-   definidos em styles/blink.css. Trocar a paleta continua sendo editar lá. */
+/* Tokens do Blink expostos como utilitários (bg-card, text-muted…). Trocar a
+   paleta continua sendo editar styles/tokens.css. */
 @theme inline {
   --color-background: var(--bg);
   --color-foreground: var(--text);
-
+  --color-surface: var(--surface);
   --color-card: var(--card);
-  --color-card-foreground: var(--text);
+  --color-card-hi: var(--card-hi);
+  --color-line: var(--line);
+  --color-line-soft: var(--line-soft);
+  --color-muted: var(--text-2);
+  --color-subtle: var(--text-3);
+  --color-invert: var(--invert);
+  --color-on-invert: var(--on-invert);
+  --color-error: var(--error);
 
-  --color-popover: var(--card-hi);
-  --color-popover-foreground: var(--text);
+  --font-sans: var(--font);
 
-  --color-primary: var(--invert);
-  --color-primary-foreground: var(--on-invert);
-
-  --color-secondary: var(--surface);
-  --color-secondary-foreground: var(--text);
-
-  --color-muted: var(--surface);
-  --color-muted-foreground: var(--text-2);
-
-  --color-accent: var(--surface);
-  --color-accent-foreground: var(--text);
-
-  --color-destructive: var(--error);
-  --color-destructive-foreground: var(--text);
-
-  --color-border: var(--line-soft);
-  --color-input: var(--line);
-  --color-ring: var(--text-2);
-
-  --font-sans: var(--font-body);
-  --font-display: var(--font-display);
-
-  /* O sistema tem um raio só: 24px em tudo que é card, tag, input e botão. */
-  --radius-3xl: var(--radius);
+  --radius-card: var(--radius);
+  --radius-md: var(--radius-md);
+  --radius-sm: var(--radius-sm);
 }

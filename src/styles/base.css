@@ -1,0 +1,78 @@
+/* ==========================================================================
+   Base: reset, tipografia, foco e movimento. Escrito celular primeiro: a
+   regra solta vale para o celular e as media queries (só min-width) somam.
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  /* Âncoras param abaixo do header flutuante. */
+  scroll-padding-top: calc(var(--header-h) + var(--header-top) + 16px);
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+img, svg, video { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+h1, h2, h3, h4 { margin: 0; font-weight: 800; line-height: 1.1; letter-spacing: var(--tracking-title); text-wrap: balance; }
+p { margin: 0; text-wrap: pretty; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+::selection { background: var(--invert); color: var(--on-invert); }
+
+/* Foco visível só para teclado, deslocado do elemento para não colar na borda. */
+:focus-visible { outline: 2px solid var(--text); outline-offset: 4px; border-radius: 6px; }
+
+/* Pular para o conteúdo: escondido até receber foco. */
+.skip-link {
+  position: fixed; left: 12px; top: 12px; z-index: 100;
+  padding: 12px 18px; border-radius: var(--radius-sm);
+  background: var(--invert); color: var(--on-invert); font-weight: 700;
+  transform: translateY(calc(-100% - 24px));
+  transition: transform var(--dur) var(--ease-out);
+}
+.skip-link:focus-visible { transform: none; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* Revelação ao rolar (hook useScrollReveal): sobe e aparece ao entrar na tela.
+   Opacidade e movimento têm durações diferentes; o movimento termina depois,
+   o que dá a sensação de assentar. */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px) scale(.98);
+  transition:
+    opacity var(--dur-reveal-fade) ease,
+    transform var(--dur-reveal-move) var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+.reveal.is-in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    transition-delay: 0s !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
+
+/* Destino do "pular para o conteúdo": recebe foco por script, sem contorno. */
+[tabindex="-1"]:focus { outline: none; }

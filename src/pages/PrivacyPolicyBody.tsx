@@ -1,41 +1,15 @@
+/** Corpo do documento; cabeçalho, índice e layout ficam em LegalPage. */
 export function PrivacyPolicyBody() {
   return (
-    <main className="section">
-      <div className="wrap doc">
-
-        <p className="eyebrow">Legal</p>
-        <h1>Política de Privacidade</h1>
-        <p className="doc__meta">Aplica-se ao aplicativo Blink (iOS e Android) e a este site.<br />
-          Última atualização: 12 de outubro de 2026</p>
-
-        <div className="doc__toc">
-          <h4>Nesta página</h4>
-          <ol>
-            <li><a href="#quem">Quem é responsável pelos seus dados</a></li>
-            <li><a href="#dados">Que dados o Blink trata</a></li>
-            <li><a href="#ia">Processamento do seu material por inteligência artificial</a></li>
-            <li><a href="#finalidades">Para que usamos cada dado</a></li>
-            <li><a href="#compartilhamento">Com quem compartilhamos</a></li>
-            <li><a href="#seguranca">Como protegemos</a></li>
-            <li><a href="#comunidade">Conteúdo que você publica na Comunidade</a></li>
-            <li><a href="#notificacoes">Notificações</a></li>
-            <li><a href="#retencao">Retenção e exclusão da conta</a></li>
-            <li><a href="#direitos">Seus direitos</a></li>
-            <li><a href="#criancas">Idade mínima</a></li>
-            <li><a href="#internacional">Transferência internacional</a></li>
-            <li><a href="#mudancas">Mudanças nesta política</a></li>
-            <li><a href="#contato">Contato</a></li>
-          </ol>
-        </div>
-
-        <h2 id="quem">1. Quem é responsável pelos seus dados</h2>
+    <>
+        <h2 id="quem"><span className="doc__n">1</span>Quem é responsável pelos seus dados</h2>
         <p>O Blink é um aplicativo de flashcards com repetição espaçada operado por
           Gabriel Maica Warpechowski, pessoa física residente em Santo Ângelo (RS), doravante “nós”.
-          Para qualquer assunto relacionado a esta política, o canal é
+          Para qualquer assunto relacionado a esta política, o canal é{" "}
           <a href="mailto:blinkflashcards@gmail.com">blinkflashcards@gmail.com</a>.</p>
         <p>Tratamos dados pessoais na qualidade de <b>controlador</b>, nos termos da Lei nº 13.709/2018 (LGPD).</p>
 
-        <h2 id="dados">2. Que dados o Blink trata</h2>
+        <h2 id="dados"><span className="doc__n">2</span>Que dados o Blink trata</h2>
 
         <h3>2.1 Dados de conta</h3>
         <ul>
@@ -73,8 +47,8 @@ export function PrivacyPolicyBody() {
         </ul>
         <p>O plano grátis exibe anúncios do próprio Blink entre os cards. O Blink <b>não</b> vende os seus dados.</p>
 
-        <h2 id="ia">3. Processamento do seu material por inteligência artificial</h2>
-        <p>Esta é a parte mais importante desta política, então ela vem sem rodeios:
+        <h2 id="ia"><span className="doc__n">3</span>Processamento do seu material por inteligência artificial</h2>
+        <p>Esta é a parte mais importante desta política, então ela vem sem rodeios:{" "}
           <b>quando você pede ao Blink para gerar cards, o conteúdo enviado é transmitido a provedores
           de inteligência artificial de terceiros para processamento.</b></p>
         <ul>
@@ -93,7 +67,7 @@ export function PrivacyPolicyBody() {
           contratos preveem. Se você não quiser que um material específico seja processado dessa forma,
           não o envie para geração por IA. Criar cards manualmente não aciona nenhum provedor externo.</p>
 
-        <h2 id="finalidades">4. Para que usamos cada dado</h2>
+        <h2 id="finalidades"><span className="doc__n">4</span>Para que usamos cada dado</h2>
         <ul>
           <li><b>Manter a sua conta</b> e sincronizar decks, sessões, conquistas e configurações entre aparelhos.</li>
           <li><b>Gerar cards</b> a partir do material que você enviar.</li>
@@ -109,7 +83,7 @@ export function PrivacyPolicyBody() {
           contratou), o cumprimento de obrigação legal e o legítimo interesse em manter o serviço
           seguro e funcional.</p>
 
-        <h2 id="compartilhamento">5. Com quem compartilhamos</h2>
+        <h2 id="compartilhamento"><span className="doc__n">5</span>Com quem compartilhamos</h2>
         <ul>
           <li><b>Supabase</b>: infraestrutura de autenticação, banco de dados, armazenamento de arquivos e funções de servidor.</li>
           <li><b>Google</b>: processamento de IA e extração de arquivos, conforme a seção 3.</li>
@@ -120,7 +94,7 @@ export function PrivacyPolicyBody() {
         </ul>
         <p>Não compartilhamos dados pessoais com anunciantes nem com corretores de dados.</p>
 
-        <h2 id="seguranca">6. Como protegemos</h2>
+        <h2 id="seguranca"><span className="doc__n">6</span>Como protegemos</h2>
         <ul>
           <li><b>Row Level Security em todas as tabelas.</b> O isolamento entre contas é aplicado pelo banco de dados: uma conta não consegue ler os dados de outra, mesmo que a interface falhe.</li>
           <li><b>Segredos fora do aplicativo.</b> Nenhuma chave de API viaja no pacote instalado no seu aparelho.</li>
@@ -130,7 +104,7 @@ export function PrivacyPolicyBody() {
         <p>Nenhum sistema é imune a incidentes. Se ocorrer um incidente de segurança relevante,
           comunicaremos você e a ANPD conforme exige a LGPD.</p>
 
-        <h2 id="comunidade">7. Conteúdo que você publica na Comunidade</h2>
+        <h2 id="comunidade"><span className="doc__n">7</span>Conteúdo que você publica na Comunidade</h2>
         <p>Publicar um deck na aba Comunidade torna aquele conteúdo <b>visível para outras pessoas</b>,
           junto do seu nome de exibição, da avaliação recebida e da contagem de downloads.
           A publicação é feita por <i>snapshot</i>: quem baixa fica com a própria cópia.</p>
@@ -139,12 +113,12 @@ export function PrivacyPolicyBody() {
           não contenha dados pessoais seus ou de terceiros.</p>
         <p>Decks denunciados entram em uma fila de moderação e, quando removidos, saem do ar de fato.</p>
 
-        <h2 id="notificacoes">8. Notificações</h2>
+        <h2 id="notificacoes"><span className="doc__n">8</span>Notificações</h2>
         <p>Os lembretes de estudo são <b>notificações locais</b>, agendadas no próprio aparelho no horário
           que você escolher (padrão 20:00). O alerta de sequência em risco é uma opção separada.
           Você pode desligar ambos no aplicativo ou nas configurações do sistema.</p>
 
-        <h2 id="retencao">9. Retenção e exclusão da conta</h2>
+        <h2 id="retencao"><span className="doc__n">9</span>Retenção e exclusão da conta</h2>
         <p>Mantemos os seus dados enquanto a sua conta existir. <b>A exclusão da conta está disponível
           dentro do próprio aplicativo</b> e remove os seus dados de ponta a ponta: decks, cards,
           sessões, progresso, conquistas e imagens armazenadas.</p>
@@ -155,41 +129,39 @@ export function PrivacyPolicyBody() {
           <li>Backups são sobrescritos no ciclo normal de rotação, em até 7 dias.</li>
         </ul>
 
-        <h2 id="direitos">10. Seus direitos</h2>
+        <h2 id="direitos"><span className="doc__n">10</span>Seus direitos</h2>
         <p>A LGPD garante a você, entre outros, o direito de confirmar a existência de tratamento,
           acessar seus dados, corrigir dados incompletos ou desatualizados, solicitar anonimização,
           bloqueio ou eliminação, pedir a portabilidade, obter informação sobre compartilhamentos e
           revogar consentimento.</p>
-        <p>Para exercer qualquer um deles, escreva para
+        <p>Para exercer qualquer um deles, escreva para{" "}
           <a href="mailto:blinkflashcards@gmail.com">blinkflashcards@gmail.com</a>. Respondemos em até
           15 dias. Boa parte disso você resolve sozinho e na hora: exportar decks em arquivo e excluir a
           conta são funções do próprio aplicativo.</p>
 
-        <h2 id="criancas">11. Idade mínima</h2>
+        <h2 id="criancas"><span className="doc__n">11</span>Idade mínima</h2>
         <p>O Blink não se destina a menores de 13 anos. Entre 13 e 18 anos, o uso deve contar com
           consentimento e supervisão dos pais ou responsáveis. Se identificarmos uma conta criada por
           criança abaixo da idade mínima, ela será removida.</p>
 
-        <h2 id="internacional">12. Transferência internacional</h2>
+        <h2 id="internacional"><span className="doc__n">12</span>Transferência internacional</h2>
         <p>Os provedores de infraestrutura e de IA mencionados nesta política podem processar dados fora
           do Brasil, inclusive nos Estados Unidos. Essas transferências ocorrem com base nas hipóteses
           do art. 33 da LGPD e nas cláusulas contratuais firmadas com cada fornecedor.</p>
 
-        <h2 id="mudancas">13. Mudanças nesta política</h2>
+        <h2 id="mudancas"><span className="doc__n">13</span>Mudanças nesta política</h2>
         <p>Se esta política mudar de forma relevante, atualizaremos a data no topo e avisaremos dentro do
           aplicativo antes que a nova versão passe a valer. Continuar usando o Blink depois disso
           significa concordar com o texto atualizado.</p>
 
-        <h2 id="contato">14. Contato</h2>
-        <p>Dúvidas, pedidos relativos aos seus dados ou reclamações:
+        <h2 id="contato"><span className="doc__n">14</span>Contato</h2>
+        <p>Dúvidas, pedidos relativos aos seus dados ou reclamações:{" "}
           <a href="mailto:blinkflashcards@gmail.com">blinkflashcards@gmail.com</a>.</p>
         <p>Você também pode apresentar reclamação à Autoridade Nacional de Proteção de Dados (ANPD).</p>
 
         <div className="card card--callout">
           <p className="small muted">Veja também os <a href="/termos">Termos de Uso</a>.</p>
         </div>
-
-      </div>
-    </main>
+    </>
   );
 }

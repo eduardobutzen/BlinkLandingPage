@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { StoreBadges } from "@/components/StoreBadges";
-import { URL_APP_STORE, URL_GOOGLE_PLAY } from "@/data/site";
+import { LINK_APP_STORE, URL_GOOGLE_PLAY } from "@/data/site";
 import {
   buscarPreview,
   abrirNoApp,
@@ -51,11 +51,11 @@ export default function AutorCompartilhado() {
     return (
       <>
         <Header enxuto />
-        <section className="section">
+        <main id="conteudo" tabIndex={-1} className="section page-top">
           <div className="wrap">
-            <p className="muted">Carregando…</p>
+            <p className="muted" role="status">Carregando…</p>
           </div>
-        </section>
+        </main>
         <Footer />
       </>
     );
@@ -65,19 +65,21 @@ export default function AutorCompartilhado() {
     return (
       <>
         <Header enxuto />
-        <section className="section">
-          <div className="wrap section-head section-head--center">
-            <h1 className="h-section tt">Este perfil não está disponível</h1>
-            <p className="lead muted">
-              A pessoa pode não ter nenhum deck publicado no momento.
-            </p>
-            <div className="hero__cta" style={{ justifyContent: "center" }}>
-              <Link className="btn btn--solid btn--lg" to="/">
-                Conhecer o Blink
-              </Link>
+        <main id="conteudo" tabIndex={-1} className="section page-top">
+          <div className="wrap">
+            <div className="page-head page-head--center">
+              <h1 className="t-section">Este perfil não está disponível</h1>
+              <p className="lead">
+                A pessoa pode não ter nenhum deck publicado no momento.
+              </p>
+              <div className="actions">
+                <Link className="btn btn--solid btn--lg" to="/">
+                  Conhecer o Blink
+                </Link>
+              </div>
             </div>
           </div>
-        </section>
+        </main>
         <Footer />
       </>
     );
@@ -93,24 +95,24 @@ export default function AutorCompartilhado() {
     <>
       <Header enxuto />
 
-      <section className="section">
+      <main id="conteudo" tabIndex={-1} className="section page-top">
         <div className="wrap">
-          <div className="section-head section-head--center">
+          <div className="page-head page-head--center">
             {autor.avatar_url && (
               <img
                 src={autor.avatar_url}
                 alt=""
                 width={96}
                 height={96}
-                style={{ borderRadius: "50%", margin: "0 auto 16px" }}
+                className="rounded-full"
               />
             )}
             <p className="eyebrow">Publica no Blink</p>
-            <h1 className="h-section tt">{autor.name}</h1>
-            <p className="lead muted">Publica desde {desde}</p>
+            <h1 className="t-section">{autor.name}</h1>
+            <p className="lead">Publica desde {desde}</p>
           </div>
 
-          <div className="stats">
+          <div className="stats text-center">
             <div>
               <div className="stat__n">{autor.deck_count}</div>
               <div className="stat__l">
@@ -137,11 +139,12 @@ export default function AutorCompartilhado() {
             </div>
           </div>
 
-          <div className="hero__cta">
+          <div className="actions justify-center">
             <button
+              type="button"
               className="btn btn--solid btn--lg"
               onClick={() =>
-                abrirNoApp("autor", autor.id, lojaDoAparelho(URL_APP_STORE, URL_GOOGLE_PLAY))
+                abrirNoApp("autor", autor.id, lojaDoAparelho(LINK_APP_STORE, URL_GOOGLE_PLAY))
               }
             >
               Abrir no app
@@ -149,12 +152,12 @@ export default function AutorCompartilhado() {
           </div>
 
           {decks.length > 0 && (
-            <div style={{ marginTop: "40px" }}>
-              <p className="eyebrow">Decks desta pessoa</p>
-              <div className="grid grid--2">
+            <div className="mt-10">
+              <p className="eyebrow mb-4">Decks desta pessoa</p>
+              <div className="grid-2">
                 {decks.map((deck) => (
                   <Link className="card" to={`/deck/${deck.id}`} key={deck.id}>
-                    <h3 className="h-card">{deck.title}</h3>
+                    <h2 className="t-card">{deck.title}</h2>
                     <p className="small muted">
                       {deck.card_count} {deck.card_count === 1 ? "card" : "cards"}
                       {deck.rating_count > 0 &&
@@ -166,11 +169,11 @@ export default function AutorCompartilhado() {
             </div>
           )}
 
-          <div style={{ marginTop: "40px" }}>
+          <div className="mt-10">
             <StoreBadges />
           </div>
         </div>
-      </section>
+      </main>
 
       <Footer />
     </>

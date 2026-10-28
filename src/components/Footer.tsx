@@ -1,6 +1,22 @@
 import { Link } from "react-router-dom";
 import { BlinkMark } from "@/components/BlinkMark";
-import { EMAIL_SUPORTE, URL_APP_STORE, URL_GOOGLE_PLAY } from "@/data/site";
+import { EMAIL_SUPORTE, LINK_APP_STORE, URL_APP_STORE, URL_GOOGLE_PLAY } from "@/data/site";
+
+function LinkDaLoja({ url, nome, externo = true }: { url: string; nome: string; externo?: boolean }) {
+  if (!url) return null;
+  return (
+    <li>
+      {externo ? (
+        <a href={url} target="_blank" rel="noopener noreferrer">
+          {nome}
+          <span className="sr-only"> (abre em nova aba)</span>
+        </a>
+      ) : (
+        <Link to={url}>{nome}</Link>
+      )}
+    </li>
+  );
+}
 
 export function Footer() {
   return (
@@ -8,57 +24,33 @@ export function Footer() {
       <div className="wrap">
         <div className="footer__top">
           <div className="footer__brand">
-            <Link className="brand" to="/">
-              <span className="brand__mark">
-                <BlinkMark />
-              </span>
-              <span className="brand__word">Blink</span>
+            <Link className="brand" to="/" aria-label="Blink, página inicial">
+              <BlinkMark />
+              <span className="brand__word" aria-hidden="true">Blink</span>
             </Link>
             <p>Flashcards com IA e repetição espaçada, para iPhone e Android.</p>
           </div>
 
-          <div className="footer__col">
-            <h4>Baixar</h4>
+          <nav className="footer__col" aria-labelledby="rodape-baixar">
+            <h2 id="rodape-baixar">Baixar</h2>
             <ul>
-              <li>
-                {URL_APP_STORE ? (
-                  <a href={URL_APP_STORE} target="_blank" rel="noopener noreferrer">
-                    App Store
-                  </a>
-                ) : (
-                  <span className="muted">App Store (em breve)</span>
-                )}
-              </li>
-              <li>
-                {URL_GOOGLE_PLAY ? (
-                  <a href={URL_GOOGLE_PLAY} target="_blank" rel="noopener noreferrer">
-                    Google Play
-                  </a>
-                ) : (
-                  <span className="muted">Google Play (em breve)</span>
-                )}
-              </li>
+              <LinkDaLoja url={LINK_APP_STORE} externo={Boolean(URL_APP_STORE)} nome="App Store" />
+              <LinkDaLoja url={URL_GOOGLE_PLAY} nome="Google Play" />
             </ul>
-          </div>
+          </nav>
 
-          <div className="footer__col footer__col--wide">
-            <h4>Contato</h4>
+          <nav className="footer__col" aria-labelledby="rodape-legal">
+            <h2 id="rodape-legal">Legal</h2>
             <ul>
-              <li>
-                <a href={`mailto:${EMAIL_SUPORTE}`}>{EMAIL_SUPORTE}</a>
-              </li>
+              <li><Link to="/termos">Termos de Uso</Link></li>
+              <li><Link to="/privacidade">Política de Privacidade</Link></li>
             </ul>
-          </div>
+          </nav>
 
-          <div className="footer__col">
-            <h4>Legal</h4>
+          <div className="footer__col footer__col--contato">
+            <h2>Contato</h2>
             <ul>
-              <li>
-                <Link to="/termos">Termos de Uso</Link>
-              </li>
-              <li>
-                <Link to="/privacidade">Política de Privacidade</Link>
-              </li>
+              <li><a href={`mailto:${EMAIL_SUPORTE}`}>{EMAIL_SUPORTE}</a></li>
             </ul>
           </div>
         </div>
@@ -68,6 +60,8 @@ export function Footer() {
           <span>Feito no Brasil</span>
         </div>
       </div>
+
+      <p className="footer__word" aria-hidden="true">Blink</p>
     </footer>
   );
 }

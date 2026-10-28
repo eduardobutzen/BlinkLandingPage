@@ -1,18 +1,16 @@
-import { useEffect } from "react";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import { ShieldCheck } from "lucide-react";
+import { LegalPage } from "@/pages/LegalPage";
 import { PrivacyPolicyBody } from "@/pages/PrivacyPolicyBody";
 
 export default function PrivacyPolicy() {
-  useEffect(() => {
-    document.title = "Política de Privacidade | Blink";
-  }, []);
-
   return (
-    <>
-      <Header enxuto />
+    <LegalPage
+      titulo="Política de Privacidade"
+      escopo="Aplica-se ao aplicativo Blink (iOS e Android) e a este site."
+      atualizacao="12 de outubro de 2026"
+      Icone={ShieldCheck}
+    >
       <PrivacyPolicyBody />
-      <Footer />
-    </>
+    </LegalPage>
   );
 }
