@@ -6,5 +6,17 @@
       "headers": [{ "key": "Content-Type", "value": "application/json" }]
     }
   ],
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "rewrites": [
+    {
+      "source": "/deck/:id",
+      "has": [{ "type": "header", "key": "user-agent", "value": "(?i).*(whatsapp|facebookexternalhit|facebot|telegrambot|twitterbot|slackbot|discordbot|linkedinbot|skypeuripreview|pinterest|googlebot|bingbot|applebot|iframely|embedly).*" }],
+      "destination": "/api/previa?tipo=deck&id=:id"
+    },
+    {
+      "source": "/autor/:id",
+      "has": [{ "type": "header", "key": "user-agent", "value": "(?i).*(whatsapp|facebookexternalhit|facebot|telegrambot|twitterbot|slackbot|discordbot|linkedinbot|skypeuripreview|pinterest|googlebot|bingbot|applebot|iframely|embedly).*" }],
+      "destination": "/api/previa?tipo=autor&id=:id"
+    },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
+  ]
 }

@@ -98,18 +98,32 @@ export default function DeckCompartilhado() {
       <main id="conteudo" tabIndex={-1} className="section page-top">
         <div className="wrap">
           <div className="page-head">
-            <p className="eyebrow">Deck da comunidade</p>
+            {deck.cover_url && (
+              <img className="deck-capa" src={deck.cover_url} alt="" width={168} height={168} />
+            )}
+            {/* Deck mandado por link não está na Comunidade: dizer que está seria mentira. */}
+            <p className="eyebrow">{deck.privado ? "Deck compartilhado com você" : "Deck da comunidade"}</p>
             <h1 className="t-section">{deck.title}</h1>
             {deck.description && <p className="lead">{deck.description}</p>}
 
-            {/* Autor — leva ao perfil dele, que é a outra página compartilhável */}
-            {deck.author_name && (
+            {/* Autor: leva ao perfil dele, que é a outra página compartilhável.
+                Deck privado não linka: o perfil só lista o que está na Comunidade,
+                e quem só manda por link cairia num perfil "não encontrado". */}
+            {deck.author_name && !deck.privado && (
               <Link className="author" to={`/autor/${deck.author_id}`}>
                 {deck.author_avatar_url && (
                   <img src={deck.author_avatar_url} alt="" width={32} height={32} />
                 )}
                 <span>por {deck.author_name}</span>
               </Link>
+            )}
+            {deck.author_name && deck.privado && (
+              <span className="author">
+                {deck.author_avatar_url && (
+                  <img src={deck.author_avatar_url} alt="" width={32} height={32} />
+                )}
+                <span>por {deck.author_name}</span>
+              </span>
             )}
           </div>
 

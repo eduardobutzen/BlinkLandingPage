@@ -114,6 +114,8 @@
 .store-badge__s1 { font-size: var(--fs-tiny); line-height: 1.2; opacity: .8; }
 .store-badge__s2 { font-size: 1.0625rem; font-weight: 800; line-height: 1.25; white-space: nowrap; }
 @media (hover: hover) { a.store-badge:hover { transform: translateY(-2px); opacity: .92; } }
+/* Loja que ainda não abriu (Google Play antes do lançamento): mesmo formato, apagado e sem clique. */
+.store-badge--breve { background: transparent; color: var(--text-2); border-color: var(--line-soft); cursor: default; }
 @media (min-width: 640px) { .store-badge { flex: 0 0 auto; } }
 
 /* ---------- Header flutuante ---------- */
@@ -619,6 +621,7 @@ a.card { transition: border-color var(--dur-fast) ease, transform var(--dur) var
 .checklist li::before { content: ""; flex: none; width: 6px; height: 6px; margin-top: .6em; border-radius: 50%; background: var(--text-3); }
 .author { display: inline-flex; align-items: center; gap: 10px; color: var(--text-2); font-size: var(--fs-small); }
 .author img { width: 32px; height: 32px; border-radius: 50%; }
+.deck-capa { width: 168px; height: 168px; object-fit: cover; border-radius: var(--radius-sm); border: 1px solid var(--line-soft); margin-bottom: 20px; }
 .note { font-size: var(--fs-small); color: var(--text-2); }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 .page-head--center .actions { justify-content: center; }

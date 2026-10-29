@@ -31,6 +31,8 @@ export interface DeckPublico {
   author_avatar_url: string | null;
   license: "protected" | "shareable" | "open" | null;
   published_at: string;
+  /** Mandado só por link, sem estar na Comunidade. Ausente nas respostas antigas = público. */
+  privado?: boolean;
 }
 
 export interface AutorPublico {
@@ -149,5 +151,7 @@ export function abrirNoApp(tipo: "deck" | "autor", id: string, urlDaLoja: string
 
 /** A loja certa para o aparelho de quem abriu. */
 export function lojaDoAparelho(urlApple: string, urlGoogle: string): string {
-  return /iPhone|iPad|iPod/i.test(navigator.userAgent) ? urlApple : urlGoogle;
+  // Sem ficha na Play (`urlGoogle` vazio), o Android cai na /baixar, que
+  // explica; mandar para "" recarregaria a página sem dizer nada.
+  return /iPhone|iPad|iPod/i.test(navigator.userAgent) ? urlApple : urlGoogle || "/baixar";
 }

@@ -3,7 +3,8 @@ import { BlinkMark } from "@/components/BlinkMark";
 import { EMAIL_SUPORTE, LINK_APP_STORE, URL_APP_STORE, URL_GOOGLE_PLAY } from "@/data/site";
 
 function LinkDaLoja({ url, nome, externo = true }: { url: string; nome: string; externo?: boolean }) {
-  if (!url) return null;
+  // Loja sem URL ainda (Google Play antes do lançamento): aparece, sem link.
+  if (!url) return <li><span className="footer__breve">{nome} (em breve)</span></li>;
   return (
     <li>
       {externo ? (
