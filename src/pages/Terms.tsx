@@ -1,18 +1,16 @@
-import { useEffect } from "react";
-import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
+import { Scale } from "lucide-react";
+import { LegalPage } from "@/pages/LegalPage";
 import { TermsBody } from "@/pages/TermsBody";
 
 export default function Terms() {
-  useEffect(() => {
-    document.title = "Termos de Uso | Blink";
-  }, []);
-
   return (
-    <>
-      <Header enxuto />
+    <LegalPage
+      titulo="Termos de Uso"
+      escopo="Aplica-se ao aplicativo Blink (iOS e Android) e a este site."
+      atualizacao="12 de outubro de 2026"
+      Icone={Scale}
+    >
       <TermsBody />
-      <Footer />
-    </>
+    </LegalPage>
   );
 }

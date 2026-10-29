@@ -1,11 +1,11 @@
 export const EMAIL_SUPORTE = "blinkflashcards@gmail.com";
 
-/* PREENCHER com os links reais das fichas nas lojas.
-   Enquanto uma delas estiver vazia, os botões e a página /baixar mostram
-   "em breve" em vez de levar a um endereço que não existe. */
+/* Fichas do Blink nas lojas. O identificador da Play é o pacote do app
+   (`br.com.blinkflashcards.app`, reverse-DNS do domínio; ver o app.json do
+   app). PREENCHER `URL_APP_STORE` com o link da ficha
+   (https://apps.apple.com/br/app/…/id…). */
 export const URL_APP_STORE: string = "";
-// No dia do lançamento, a da Play é:
-// https://play.google.com/store/apps/details?id=br.com.blinkflashcards.app
-// (identificador derivado do domínio, reverse-DNS; era `com.blink.app` até
-// 19/09/2026, ver o app.json do app).
-export const URL_GOOGLE_PLAY: string = "";
+export const URL_GOOGLE_PLAY: string = "https://play.google.com/store/apps/details?id=br.com.blinkflashcards.app";
+
+/** Destino dos botões da App Store: a ficha, ou /baixar enquanto o link não existe. */
+export const LINK_APP_STORE = URL_APP_STORE || "/baixar";

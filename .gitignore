@@ -23,3 +23,6 @@ logs/
 *.sw?
 
 *.tsbuildinfo
+
+# Screenshots de referência (Cooud é de terceiros; ficam só locais)
+docs/screenshots/

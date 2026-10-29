@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { StoreBadges } from "@/components/StoreBadges";
-import { URL_APP_STORE, URL_GOOGLE_PLAY } from "@/data/site";
+import { LINK_APP_STORE, URL_GOOGLE_PLAY } from "@/data/site";
 import {
   buscarPreview,
   abrirNoApp,
@@ -54,11 +54,11 @@ export default function DeckCompartilhado() {
     return (
       <>
         <Header enxuto />
-        <section className="section">
+        <main id="conteudo" tabIndex={-1} className="section page-top">
           <div className="wrap">
-            <p className="muted">Carregando…</p>
+            <p className="muted" role="status">Carregando…</p>
           </div>
-        </section>
+        </main>
         <Footer />
       </>
     );
@@ -68,20 +68,22 @@ export default function DeckCompartilhado() {
     return (
       <>
         <Header enxuto />
-        <section className="section">
-          <div className="wrap section-head section-head--center">
-            <h1 className="h-section tt">Este deck não está disponível</h1>
-            <p className="lead muted">
-              Ele pode ter sido removido pelo autor ou tirado do ar. O resto da
-              comunidade continua lá dentro.
-            </p>
-            <div className="hero__cta" style={{ justifyContent: "center" }}>
-              <Link className="btn btn--solid btn--lg" to="/">
-                Conhecer o Blink
-              </Link>
+        <main id="conteudo" tabIndex={-1} className="section page-top">
+          <div className="wrap">
+            <div className="page-head page-head--center">
+              <h1 className="t-section">Este deck não está disponível</h1>
+              <p className="lead">
+                Ele pode ter sido removido pelo autor ou tirado do ar. O resto da
+                comunidade continua lá dentro.
+              </p>
+              <div className="actions">
+                <Link className="btn btn--solid btn--lg" to="/">
+                  Conhecer o Blink
+                </Link>
+              </div>
             </div>
           </div>
-        </section>
+        </main>
         <Footer />
       </>
     );
@@ -93,33 +95,23 @@ export default function DeckCompartilhado() {
     <>
       <Header enxuto />
 
-      <section className="section">
+      <main id="conteudo" tabIndex={-1} className="section page-top">
         <div className="wrap">
-          <div className="section-head">
+          <div className="page-head">
             <p className="eyebrow">Deck da comunidade</p>
-            <h1 className="h-section tt">{deck.title}</h1>
-            {deck.description && <p className="lead muted">{deck.description}</p>}
-          </div>
+            <h1 className="t-section">{deck.title}</h1>
+            {deck.description && <p className="lead">{deck.description}</p>}
 
-          {/* Autor — leva ao perfil dele, que é a outra página compartilhável */}
-          {deck.author_name && (
-            <Link
-              className="doc__meta"
-              to={`/autor/${deck.author_id}`}
-              style={{ display: "flex", alignItems: "center", gap: "10px" }}
-            >
-              {deck.author_avatar_url && (
-                <img
-                  src={deck.author_avatar_url}
-                  alt=""
-                  width={32}
-                  height={32}
-                  style={{ borderRadius: "50%" }}
-                />
-              )}
-              <span>por {deck.author_name}</span>
-            </Link>
-          )}
+            {/* Autor — leva ao perfil dele, que é a outra página compartilhável */}
+            {deck.author_name && (
+              <Link className="author" to={`/autor/${deck.author_id}`}>
+                {deck.author_avatar_url && (
+                  <img src={deck.author_avatar_url} alt="" width={32} height={32} />
+                )}
+                <span>por {deck.author_name}</span>
+              </Link>
+            )}
+          </div>
 
           {/* Os números que fazem alguém decidir */}
           <div className="stats">
@@ -145,7 +137,7 @@ export default function DeckCompartilhado() {
           </div>
 
           {deck.tags.length > 0 && (
-            <div className="badges">
+            <div className="tags">
               {deck.tags.slice(0, 6).map((tag) => (
                 <span className="pill" key={tag}>
                   {tag}
@@ -154,24 +146,25 @@ export default function DeckCompartilhado() {
             </div>
           )}
 
-          <div className="hero__cta">
+          <div className="actions">
             <button
+              type="button"
               className="btn btn--solid btn--lg"
               onClick={() =>
-                abrirNoApp("deck", deck.id, lojaDoAparelho(URL_APP_STORE, URL_GOOGLE_PLAY))
+                abrirNoApp("deck", deck.id, lojaDoAparelho(LINK_APP_STORE, URL_GOOGLE_PLAY))
               }
             >
               Abrir no app
             </button>
           </div>
-          <p className="hero__note muted small">
+          <p className="note mt-3.5">
             Já tem o Blink? O botão abre o deck direto. Se ainda não tem, ele leva
             para a loja.
           </p>
 
           {/* Amostra — só as perguntas, e só quando a licença do autor permite */}
           {amostra.length > 0 && (
-            <div className="card" style={{ marginTop: "32px" }}>
+            <div className="card mt-8">
               <p className="eyebrow">Algumas perguntas deste deck</p>
               <ul className="checklist">
                 {amostra.map((pergunta, i) => (
@@ -184,11 +177,11 @@ export default function DeckCompartilhado() {
             </div>
           )}
 
-          <div style={{ marginTop: "40px" }}>
-            <StoreBadges />
+          <div className="mt-10">
+            <StoreBadges alinhar="inicio" />
           </div>
         </div>
-      </section>
+      </main>
 
       <Footer />
     </>

@@ -41,24 +41,19 @@ export default function Baixar() {
   return (
     <>
       <Header enxuto />
-      <section className="section">
-        <div className="wrap" style={{ textAlign: "center", maxWidth: "46rem" }}>
-          <h1 className="h-section tt">Baixar o Blink</h1>
-          {destino ? (
-            <p className="muted">
-              Abrindo a loja do seu aparelho. Se nada acontecer, use os botões abaixo.
+      <main id="conteudo" tabIndex={-1} className="section page-top">
+        <div className="wrap">
+          <div className="page-head page-head--center">
+            <h1 className="t-section">Baixar o Blink</h1>
+            <p className="lead">
+              {destino
+                ? "Abrindo a loja do seu aparelho. Se nada acontecer, use os botões abaixo."
+                : "Escolha a loja do seu aparelho."}
             </p>
-          ) : (
-            <p className="muted">
-              O Blink está em revisão nas lojas. Assim que for aprovado, este endereço
-              leva direto para o download no seu aparelho.
-            </p>
-          )}
-          <div style={{ marginTop: "1.5rem", display: "flex", justifyContent: "center" }}>
             <StoreBadges />
           </div>
         </div>
-      </section>
+      </main>
       <Footer />
     </>
   );

@@ -1,4 +1,4 @@
-import type { AccordionItem } from "@/components/ui/interactive-accordion";
+import type { AccordionItem } from "@/components/Accordion";
 
 /** Perguntas frequentes. `content` é ReactNode para permitir links e ênfases. */
 export const perguntasFrequentes: AccordionItem[] = [
@@ -45,6 +45,51 @@ export const perguntasFrequentes: AccordionItem[] = [
       <p>
         Não. O chat fica no assunto da questão: você pede outro exemplo, pergunta por que as outras
         alternativas estão erradas ou tira dúvidas sobre ela. Não é um chatbot genérico.
+      </p>
+    ),
+  },
+  {
+    id: "material",
+    number: "05",
+    title: "O que acontece com o material que eu envio?",
+    content: (
+      <p>
+        Ele só sai dos nossos servidores para a IA quando você usa um recurso de IA. Usamos a
+        modalidade paga da API Gemini, do Google, em que o seu conteúdo não é usado para treinar os
+        modelos. Os detalhes estão na <a href="/privacidade#ia">Política de Privacidade</a>.
+      </p>
+    ),
+  },
+  {
+    id: "limites",
+    number: "06",
+    title: "Tem limite de tamanho de arquivo?",
+    content: (
+      <p>
+        Sim: até 25 MB, 80 páginas ou slides e 60 figuras por arquivo. O que passar disso é
+        processado até onde couber, e o app avisa.
+      </p>
+    ),
+  },
+  {
+    id: "algoritmo",
+    number: "07",
+    title: "Como o app decide quando eu revejo um card?",
+    content: (
+      <p>
+        Pelo algoritmo SM-2, da mesma família usada pelo Anki. Você diz se acertou ou errou, e ele
+        agenda a próxima revisão de cada card.
+      </p>
+    ),
+  },
+  {
+    id: "conta",
+    number: "08",
+    title: "Posso apagar minha conta?",
+    content: (
+      <p>
+        Sim, dentro do próprio app. A exclusão remove decks, cards, sessões, progresso, conquistas e
+        imagens. Cópias de decks que você publicou e outras pessoas já baixaram ficam com elas.
       </p>
     ),
   },
