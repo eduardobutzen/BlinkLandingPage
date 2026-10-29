@@ -49,7 +49,7 @@ export default function Baixar() {
               {destino
                 ? "Abrindo a loja do seu aparelho. Se nada acontecer, use os botões abaixo."
                 : aparelho === "android" && !URL_GOOGLE_PLAY
-                  ? "O Blink ainda não chegou ao Android. Por enquanto, ele é só para iPhone."
+                  ? "O Blink chega ao Android em breve. Por enquanto, ele está no iPhone."
                   : "Escolha a loja do seu aparelho."}
             </p>
             <StoreBadges />

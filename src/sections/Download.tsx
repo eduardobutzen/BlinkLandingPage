@@ -1,5 +1,4 @@
 import { StoreBadges } from "@/components/StoreBadges";
-import { PLATAFORMAS } from "@/data/site";
 
 /** Painel grande de download, com o ícone do app em destaque, fechando a página. */
 export function Download() {
@@ -12,7 +11,7 @@ export function Download() {
           <h2 id="baixar-titulo" className="t-section tt">
             Baixe o Blink e <strong>estude hoje</strong>.
           </h2>
-          <p className="lead">Grátis {PLATAFORMAS}.</p>
+          <p className="lead">Grátis no iPhone e no Android.</p>
           <StoreBadges />
         </div>
       </div>

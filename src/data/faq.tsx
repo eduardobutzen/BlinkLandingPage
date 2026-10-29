@@ -1,5 +1,4 @@
 import type { AccordionItem } from "@/components/Accordion";
-import { TEM_ANDROID } from "@/data/site";
 
 /** Perguntas frequentes. `content` é ReactNode para permitir links e ênfases. */
 export const perguntasFrequentes: AccordionItem[] = [
@@ -33,7 +32,7 @@ export const perguntasFrequentes: AccordionItem[] = [
     title: "Posso cancelar?",
     content: (
       <p>
-        Sim, quando quiser. A assinatura é feita pela {TEM_ANDROID ? "App Store ou pelo Google Play" : "App Store"}, e o
+        Sim, quando quiser. A assinatura é feita pela App Store ou pelo Google Play, e o
         cancelamento é na sua conta da loja.
       </p>
     ),

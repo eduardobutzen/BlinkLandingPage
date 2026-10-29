@@ -15,11 +15,25 @@ const LOJAS: { url: string; externo: boolean; icone: ReactNode; linha1: string; 
   { url: URL_GOOGLE_PLAY, externo: true, icone: ICONE_PLAY, linha1: "Disponível no", nome: "Google Play", rotulo: "Baixar o Blink no Google Play" },
 ];
 
-/** Botões de download, usados no hero, no painel de download e nas páginas internas. */
+/**
+ * Botões de download, usados no hero, no painel de download e nas páginas internas.
+ *
+ * Loja sem URL (o Google Play, até o app sair lá) aparece mesmo assim, como
+ * "Em breve": quem usa Android precisa saber que vai ter, mas um botão que
+ * leva a uma página 404 é pior que um que não clica.
+ */
 export function StoreBadges({ alinhar = "centro" }: { alinhar?: "centro" | "inicio" }) {
   return (
     <div className={alinhar === "inicio" ? "store-badges store-badges--inicio" : "store-badges"}>
-      {LOJAS.filter((loja) => loja.url).map((loja) => (
+      {LOJAS.map((loja) => !loja.url ? (
+        <span key={loja.nome} className="store-badge store-badge--breve" aria-label={`${loja.nome}: em breve`}>
+          {loja.icone}
+          <span className="store-badge__txt">
+            <span className="store-badge__s1">Em breve no</span>
+            <span className="store-badge__s2">{loja.nome}</span>
+          </span>
+        </span>
+      ) : (
         <a
           key={loja.nome}
           className="store-badge"
