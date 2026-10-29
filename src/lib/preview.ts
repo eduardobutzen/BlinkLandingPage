@@ -31,6 +31,8 @@ export interface DeckPublico {
   author_avatar_url: string | null;
   license: "protected" | "shareable" | "open" | null;
   published_at: string;
+  /** Mandado só por link, sem estar na Comunidade. Ausente nas respostas antigas = público. */
+  privado?: boolean;
 }
 
 export interface AutorPublico {
