@@ -23,6 +23,19 @@ import {
  * O que ela NÃO faz: mostrar as respostas. A amostra vem só com perguntas, e
  * decidido no servidor, não aqui — ver a Edge Function `share-preview`.
  */
+/**
+ * O banco manda cada pergunta cortada em 160 letras (`left(c.front, 160)` em
+ * `share_preview_deck`), e o corte caía no meio da palavra: "ao mostra",
+ * "'pass". Pergunta que chegou no limite volta até o último espaço e ganha
+ * reticências.
+ */
+const LIMITE_DA_AMOSTRA = 160;
+function fechaCorte(pergunta: string): string {
+  if (pergunta.length < LIMITE_DA_AMOSTRA) return pergunta;
+  const ate = pergunta.lastIndexOf(" ");
+  return `${(ate > 0 ? pergunta.slice(0, ate) : pergunta).replace(/[\s,;:.'"(-]+$/, "")}…`;
+}
+
 export default function DeckCompartilhado() {
   const { id = "" } = useParams();
   const [deck, setDeck] = useState<DeckPublico | null>(null);
@@ -182,7 +195,7 @@ export default function DeckCompartilhado() {
               <p className="eyebrow">Algumas perguntas deste deck</p>
               <ul className="checklist">
                 {amostra.map((pergunta, i) => (
-                  <li key={i}>{pergunta}</li>
+                  <li key={i}>{fechaCorte(pergunta)}</li>
                 ))}
               </ul>
               <p className="small muted">
