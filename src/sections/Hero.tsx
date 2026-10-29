@@ -1,4 +1,5 @@
 import { useRef, type CSSProperties, type PointerEvent } from "react";
+import { PLATAFORMAS } from "@/data/site";
 import { ArrowDown, Flame, X } from "lucide-react";
 import { Device } from "@/components/Device";
 import { StoreBadges } from "@/components/StoreBadges";
@@ -50,7 +51,7 @@ export function Hero() {
               </a>
             </div>
             <p className="hero__note entra" style={atraso(4)}>
-              Grátis para estudar, no iPhone e no Android.
+              Grátis para estudar, {PLATAFORMAS}.
             </p>
           </div>
 

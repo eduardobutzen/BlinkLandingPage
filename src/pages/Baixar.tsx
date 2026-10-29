@@ -48,7 +48,9 @@ export default function Baixar() {
             <p className="lead">
               {destino
                 ? "Abrindo a loja do seu aparelho. Se nada acontecer, use os botões abaixo."
-                : "Escolha a loja do seu aparelho."}
+                : aparelho === "android" && !URL_GOOGLE_PLAY
+                  ? "O Blink ainda não chegou ao Android. Por enquanto, ele é só para iPhone."
+                  : "Escolha a loja do seu aparelho."}
             </p>
             <StoreBadges />
           </div>
