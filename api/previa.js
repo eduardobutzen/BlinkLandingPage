@@ -9,7 +9,8 @@
  * O `vercel.json` manda para cá só os pedidos de robô para /deck/* e /autor/*
  * (pelo user-agent). Aqui buscamos o deck ou o autor pelas mesmas funções
  * públicas da página (`share_preview_*`) e devolvemos um HTML mínimo com o
- * título, a descrição e a capa. Gente de verdade nunca chega aqui.
+ * título e a descrição do deck, e a imagem do Blink. Gente de verdade nunca
+ * chega aqui.
  */
 
 const SUPABASE_URL = "https://ekgznmmkccqitbibtgja.supabase.co";
@@ -58,7 +59,10 @@ export default async function handler(req, res) {
 
   let titulo = "Blink: sua apostila vira flashcards";
   let descricao = "Flashcards com IA e repetição espaçada. Abra no Blink e comece a estudar.";
-  let imagem = IMAGEM_PADRAO;
+  // Sempre a imagem do Blink (decisão de 29/10/2026): grande e igual em todo
+  // link, com o nome do deck no texto. A capa do deck é quadrada e o WhatsApp
+  // a mostraria como miniatura pequena; e deck sem capa ficaria diferente.
+  const imagem = IMAGEM_PADRAO;
 
   try {
     if (id && tipo === "deck") {
@@ -70,7 +74,6 @@ export default async function handler(req, res) {
         descricao = d.description
           ? `${cards} no Blink. ${d.description}`
           : `${cards} no Blink${d.author_name ? `, por ${d.author_name}` : ""}. Abra e comece a estudar.`;
-        if (d.cover_url) imagem = d.cover_url;
       } else {
         titulo = "Deck não encontrado | Blink";
       }
@@ -80,7 +83,6 @@ export default async function handler(req, res) {
         const a = p.autor;
         titulo = a.name === "Blink" ? "Decks oficiais do Blink" : `${a.name} no Blink`;
         descricao = `${a.deck_count} ${a.deck_count === 1 ? "deck publicado" : "decks publicados"}, ${a.card_count} cards. Abra no Blink e estude junto.`;
-        if (a.avatar_url) imagem = a.avatar_url;
       }
     }
   } catch {
