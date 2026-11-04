@@ -20,6 +20,13 @@ import {
  * desde", sequência de estudo nem e-mail — a tabela de perfis não é exposta, e
  * o que aparece aqui é o que já aparecia para qualquer usuário logado.
  */
+/**
+ * A conta que publica os decks oficiais se chama "Blink": sem isto a página
+ * dizia "Blink | Blink" na aba e "Decks desta pessoa". Mesma regra da prévia
+ * para robôs, em `api/previa.js`.
+ */
+const ehOficial = (nome: string) => nome === "Blink";
+
 export default function AutorCompartilhado() {
   const { id = "" } = useParams();
   const [autor, setAutor] = useState<AutorPublico | null>(null);
@@ -36,7 +43,7 @@ export default function AutorCompartilhado() {
         setAutor(r.autor);
         setDecks(r.decks);
         setEstado("ok");
-        document.title = `${r.autor.name} | Blink`;
+        document.title = ehOficial(r.autor.name) ? "Decks oficiais do Blink" : `${r.autor.name} | Blink`;
       } else {
         setEstado("nao-encontrado");
         document.title = "Autor não encontrado | Blink";
@@ -107,7 +114,7 @@ export default function AutorCompartilhado() {
                 className="rounded-full"
               />
             )}
-            <p className="eyebrow">Publica no Blink</p>
+            <p className="eyebrow">{ehOficial(autor.name) ? "Conta oficial" : "Publica no Blink"}</p>
             <h1 className="t-section">{autor.name}</h1>
             <p className="lead">Publica desde {desde}</p>
           </div>
@@ -153,7 +160,7 @@ export default function AutorCompartilhado() {
 
           {decks.length > 0 && (
             <div className="mt-10">
-              <p className="eyebrow mb-4">Decks desta pessoa</p>
+              <p className="eyebrow mb-4">{ehOficial(autor.name) ? "Decks oficiais" : "Decks desta pessoa"}</p>
               <div className="grid-2">
                 {decks.map((deck) => (
                   <Link className="card" to={`/deck/${deck.id}`} key={deck.id}>
