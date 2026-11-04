@@ -625,3 +625,14 @@ a.card { transition: border-color var(--dur-fast) ease, transform var(--dur) var
 .note { font-size: var(--fs-small); color: var(--text-2); }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 .page-head--center .actions { justify-content: center; }
+
+/* Senha nova pelo site (src/pages/RedefinirSenha.tsx) */
+.senha-form { width: 100%; max-width: 380px; margin: 24px auto 0; display: grid; gap: 16px; text-align: left; }
+.campo { display: grid; gap: 6px; font-size: .9375rem; color: var(--text-2); }
+.campo input {
+  min-height: 50px; padding: 0 16px; border-radius: var(--radius-md);
+  border: 1px solid var(--line); background: var(--surface); color: var(--text);
+  font: inherit; font-size: 16px;
+}
+.campo input:focus { outline: none; border-color: var(--line-strong); }
+.campo-erro { margin: 0; color: var(--error-text); font-size: .9375rem; }

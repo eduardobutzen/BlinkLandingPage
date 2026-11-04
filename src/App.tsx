@@ -7,6 +7,7 @@ import DeckCompartilhado from "@/pages/DeckCompartilhado";
 import AutorCompartilhado from "@/pages/AutorCompartilhado";
 import Baixar from "@/pages/Baixar";
 import LinkDoEmail, { erroDoLink } from "@/pages/LinkDoEmail";
+import RedefinirSenha, { tokenDeRecuperacao } from "@/pages/RedefinirSenha";
 
 /** Trocar de rota deve levar ao topo; âncora na mesma página, não. */
 function RolarAoTrocarDeRota() {
@@ -30,6 +31,8 @@ export default function App() {
   const { hash } = useLocation();
   const erro = erroDoLink(hash);
   if (erro) return <LinkDoEmail codigo={erro} />;
+  const recuperacao = tokenDeRecuperacao(hash);
+  if (recuperacao) return <RedefinirSenha token={recuperacao} />;
 
   return (
     <>
