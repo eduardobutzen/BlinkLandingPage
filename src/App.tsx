@@ -6,6 +6,7 @@ import Terms from "@/pages/Terms";
 import DeckCompartilhado from "@/pages/DeckCompartilhado";
 import AutorCompartilhado from "@/pages/AutorCompartilhado";
 import Baixar from "@/pages/Baixar";
+import LinkDoEmail, { erroDoLink } from "@/pages/LinkDoEmail";
 
 /** Trocar de rota deve levar ao topo; âncora na mesma página, não. */
 function RolarAoTrocarDeRota() {
@@ -13,7 +14,10 @@ function RolarAoTrocarDeRota() {
 
   useEffect(() => {
     if (hash) {
-      document.querySelector(hash)?.scrollIntoView({ behavior: "smooth" });
+      // getElementById, e não querySelector: um fragmento que não é âncora
+      // (o `#error=...&error_code=...` da Supabase) é seletor inválido, o
+      // querySelector lança e a página inteira ficava preta.
+      document.getElementById(decodeURIComponent(hash.slice(1)))?.scrollIntoView({ behavior: "smooth" });
       return;
     }
     window.scrollTo(0, 0);
@@ -23,6 +27,10 @@ function RolarAoTrocarDeRota() {
 }
 
 export default function App() {
+  const { hash } = useLocation();
+  const erro = erroDoLink(hash);
+  if (erro) return <LinkDoEmail codigo={erro} />;
+
   return (
     <>
       <RolarAoTrocarDeRota />
