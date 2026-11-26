@@ -28,7 +28,7 @@ export function Comunidade() {
           aside={
             <p className="muted">
               Encontre decks de outros estudantes por categoria, com busca, avaliações e comentários, e
-              publique os seus. No Plus, você baixa e estuda qualquer deck publicado.
+              publique os seus. Baixe e estude qualquer deck publicado, de graça.
             </p>
           }
         />

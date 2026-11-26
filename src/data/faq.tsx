@@ -8,7 +8,7 @@ export const perguntasFrequentes: AccordionItem[] = [
     title: "Preciso pagar para usar?",
     content: (
       <p>
-        Não. Estudar é grátis: flashcards, quiz, repetição espaçada, aba Revisar e comunidade. Os
+        Não. Estudar é grátis: flashcards, quiz, repetição espaçada, aba Revisar e comunidade, com download dos decks publicados. Os
         recursos de IA (gerar decks, explicar erros e conversar sobre a questão) são do Blink
         Plus.
       </p>

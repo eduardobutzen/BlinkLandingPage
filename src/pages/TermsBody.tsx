@@ -73,8 +73,8 @@ export function TermsBody() {
         <h2 id="planos"><span className="doc__n">8</span>Planos, limites e pagamentos</h2>
         <p>O Blink oferece um plano gratuito (Grátis) e um plano pago (Blink Plus).</p>
         <ul>
-          <li>O plano <b>Grátis</b> inclui o estudo com repetição espaçada, flashcards e quiz, a criação e edição dos seus próprios cards, a aba Revisar e a comunidade. Ele não inclui recursos de IA e exibe anúncios do próprio Blink entre os cards.</li>
-          <li>O <b>Blink Plus</b> custa <b>R$ 29,90 por mês</b> ou <b>R$ 199,90 por ano</b> e acrescenta a geração de decks por IA, a explicação da IA nas questões erradas, o chat com a IA sobre a questão, o download de decks da comunidade e a remoção dos anúncios.</li>
+          <li>O plano <b>Grátis</b> inclui o estudo com repetição espaçada, flashcards e quiz, a criação e edição dos seus próprios cards, a aba Revisar e a comunidade, inclusive o download dos decks publicados. Ele não inclui recursos de IA e exibe anúncios do próprio Blink entre os cards.</li>
+          <li>O <b>Blink Plus</b> custa <b>R$ 29,90 por mês</b> ou <b>R$ 199,90 por ano</b> e acrescenta a geração de decks por IA, a explicação da IA nas questões erradas, o chat com a IA sobre a questão e a remoção dos anúncios.</li>
           <li>Os recursos de IA do Plus têm limites diários e mensais de uso, verificados no servidor e informados no app e no site. Podemos ajustar esses limites, comunicando a mudança com antecedência razoável.</li>
           <li>Assinaturas contratadas pelas lojas seguem as regras de cobrança, renovação e reembolso da <b>App Store</b> ou do <b>Google Play</b>, e o cancelamento é feito na conta da respectiva loja.</li>
           <li>Aplicam-se as regras do Código de Defesa do Consumidor, inclusive o direito de arrependimento em até 7 dias para contratações à distância.</li>
